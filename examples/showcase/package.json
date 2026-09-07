@@ -1,0 +1,37 @@
+{
+  "name": "@noy-db/showcase",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "seed": "tsx scripts/seed.ts",
+    "dev": "nuxi dev",
+    "generate": "nuxi generate",
+    "postinstall": "nuxi prepare"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.69.0",
+    "@noy-db/as-noydb": "0.7.0-pre.2",
+    "@noy-db/hub": "0.7.0-pre.2",
+    "@noy-db/to-memory": "0.7.0-pre.2",
+    "@noy-db/ui": "file:../../packages/ui",
+    "@noy-db/ui-suai": "file:../../packages/ui-suai",
+    "nuxt": "^4.0.0",
+    "vue": "^3.5.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "1.2.114",
+    "@unocss/vite": "66.7.3",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0",
+    "unocss": "66.7.3",
+    "vitest": "^3.2.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@noy-db/attestation": "0.7.0-pre.2",
+      "@noy-db/ui": "file:../../packages/ui"
+    }
+  }
+}

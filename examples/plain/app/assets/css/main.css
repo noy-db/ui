@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* ui-nuxt's runtime ships as source; point Tailwind's source detection at it so the
+   classes its components use are generated (real monorepo path, not the symlink). */
+@source "../../../../../packages/ui-nuxt/dist/runtime";

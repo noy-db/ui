@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+
+# build output
+# NOTE: no trailing slash — `dist/` matches DIRECTORIES only, and `nuxt generate`
+# leaves `examples/showcase/dist` as a SYMLINK to `.output/public`, which git
+# treats as a file. A run of it committed that link, carrying an absolute path
+# from one machine into the repo (#42).
+dist
+*.tsbuildinfo
+
+# turbo
+.turbo/
+
+# test / coverage
+coverage/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# ─── Local-only AI configs (not published) ─────────────────────────
+CLAUDE.md
+.playwright-mcp/
+
+# local mirror of the private suai-css sync map — never publish
+SYNC.local.md
+.nuxt/
+.output/

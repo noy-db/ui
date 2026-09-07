@@ -1,0 +1,15 @@
+{
+  "name": "ui-nuxt-playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxi dev",
+    "postinstall": "nuxi prepare"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.114",
+    "@noy-db/ui": "file:../../ui",
+    "@nuxt/ui": "^4.0.0",
+    "nuxt": "^4.0.0"
+  }
+}

@@ -1,0 +1,444 @@
+/*
+  themes.css — 6-theme CSS variable system
+  3 palettes × 2 modes = 6 combos
+  Selector: [data-palette="..."][data-theme="..."]
+  The 8 @noy-db/ui tokens (--nui-*) are overridden per combo.
+  Extended app tokens are set per combo as well.
+*/
+
+/* ─── BASE / DEFAULTS ─────────────────────────────────────────────────────── */
+/* Applied to :root so everything works before JS sets data-* attributes.     */
+/* Defaults = bluenote light.                                                  */
+
+:root {
+  /* nui tokens */
+  --nui-bg: #f3ead6;
+  --nui-bg-accent: #e9dcc0;
+  --nui-fg: #14171c;
+  --nui-muted: #5c5a52;
+  --nui-subtle: #8a8678;
+  --nui-border: #d8c9a8;
+  --nui-accent: #1c39bb;
+  --nui-accent-fg: #f3ead6;
+
+  /* extended app tokens */
+  --accent-2: #d96e2a;
+  --hairline: #c9b896;
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'Public Sans', monospace;
+  --display-transform: uppercase;
+  --display-spacing: 0.02em;
+  --display-weight: 400;
+  --radius: 2px;
+  --radius-control: 2px;
+  --border-w: 1px;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --space-row: 0.5rem;
+  --shell-gap: 0;
+
+  /* table-header frosted glass tokens */
+  --nui-thead-bg: var(--nui-accent);
+  --nui-thead-blur: 0px;
+
+  /* brand font — separate from display so Speed can use Saira for Vinyl vs DM Sans body */
+  --font-brand: var(--font-display);
+
+  /* semantic badge colors (stat card icons) — light-mode defaults */
+  --nui-badge-success-bg: rgba(22, 163, 74, 0.10);
+  --nui-badge-success-fg: #166534;
+  --nui-badge-warning-bg: rgba(217, 119, 6, 0.10);
+  --nui-badge-warning-fg: #92400e;
+  --nui-badge-error-bg: rgba(220, 38, 38, 0.10);
+  --nui-badge-error-fg: #991b1b;
+  --nui-badge-info-bg: rgba(14, 165, 233, 0.10);
+  --nui-badge-info-fg: #075985;
+}
+
+/* ─── BLUENOTE ─────────────────────────────────────────────────────────────── */
+
+:root[data-palette="bluenote"][data-theme="light"],
+:root[data-palette="bluenote"]:not([data-theme="dark"]) {
+  --nui-bg: #f3ead6;
+  --nui-bg-accent: #e9dcc0;
+  --nui-fg: #14171c;
+  --nui-muted: #5c5a52;
+  --nui-subtle: #8a8678;
+  --nui-border: #d8c9a8;
+  --nui-accent: #1c39bb;
+  --nui-accent-fg: #f3ead6;
+  --accent-2: #d96e2a;
+  --hairline: #c9b896;
+
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'Public Sans', monospace;
+  --display-transform: uppercase;
+  --display-spacing: 0.02em;
+  --display-weight: 400;
+  --radius: 2px;
+  --radius-control: 2px;
+  --border-w: 1px;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --nui-thead-bg: rgba(28, 57, 187, 0.90);
+}
+
+:root[data-palette="bluenote"][data-theme="dark"] {
+  --nui-bg: #0f1a3a;
+  --nui-bg-accent: #16244a;
+  --nui-fg: #f3ead6;
+  --nui-muted: #a9b2cf;
+  --nui-subtle: #6f7aa0;
+  --nui-border: #2a3a66;
+  --nui-accent: #6f86ff;
+  --nui-accent-fg: #0f1a3a;
+  --accent-2: #ff8c42;
+  --hairline: #2a3a66;
+
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'Public Sans', monospace;
+  --display-transform: uppercase;
+  --display-spacing: 0.02em;
+  --display-weight: 400;
+  --radius: 2px;
+  --radius-control: 2px;
+  --border-w: 1px;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --nui-thead-bg: rgba(111, 134, 255, 0.88);
+
+  --nui-badge-success-bg: rgba(74, 222, 128, 0.12);
+  --nui-badge-success-fg: #4ade80;
+  --nui-badge-warning-bg: rgba(251, 191, 36, 0.12);
+  --nui-badge-warning-fg: #fbbf24;
+  --nui-badge-error-bg: rgba(248, 113, 113, 0.12);
+  --nui-badge-error-fg: #f87171;
+  --nui-badge-info-bg: rgba(56, 189, 248, 0.12);
+  --nui-badge-info-fg: #38bdf8;
+}
+
+/* ─── HIFI ─────────────────────────────────────────────────────────────────── */
+
+:root[data-palette="hifi"][data-theme="light"],
+:root[data-palette="hifi"]:not([data-theme="dark"]) {
+  --nui-bg: #ece8e1;
+  --nui-bg-accent: #e0dbd1;
+  --nui-fg: #1a1c1e;
+  --nui-muted: #5e6066;
+  --nui-subtle: #8b8d92;
+  --nui-border: #cfcabf;
+  --nui-accent: #c07f00;
+  --nui-accent-fg: #ffffff;
+  --accent-2: #1f9e98;
+  --hairline: #d3cdc1;
+
+  --font-display: 'Saira', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --display-transform: none;
+  --display-spacing: 0.01em;
+  --display-weight: 600;
+  --radius: 8px;
+  --radius-control: 6px;
+  --border-w: 1px;
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.06);
+  --nui-thead-bg: rgba(192, 127, 0, 0.88);
+}
+
+:root[data-palette="hifi"][data-theme="dark"] {
+  --nui-bg: #16181b;
+  --nui-bg-accent: #1f2226;
+  --nui-fg: #e8e6e1;
+  --nui-muted: #9a9ca2;
+  --nui-subtle: #6b6d72;
+  --nui-border: #2c3036;
+  --nui-accent: #ffb000;
+  --nui-accent-fg: #16181b;
+  --accent-2: #2bd0c6;
+  --hairline: #2c3036;
+
+  --font-display: 'Saira', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --display-transform: none;
+  --display-spacing: 0.01em;
+  --display-weight: 600;
+  --radius: 8px;
+  --radius-control: 6px;
+  --border-w: 1px;
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.06);
+  --nui-thead-bg: rgba(255, 176, 0, 0.88);
+
+  --nui-badge-success-bg: rgba(74, 222, 128, 0.12);
+  --nui-badge-success-fg: #4ade80;
+  --nui-badge-warning-bg: rgba(251, 191, 36, 0.12);
+  --nui-badge-warning-fg: #fbbf24;
+  --nui-badge-error-bg: rgba(248, 113, 113, 0.12);
+  --nui-badge-error-fg: #f87171;
+  --nui-badge-info-bg: rgba(56, 189, 248, 0.12);
+  --nui-badge-info-fg: #38bdf8;
+}
+
+/* ─── WHITELABEL ───────────────────────────────────────────────────────────── */
+
+:root[data-palette="whitelabel"][data-theme="light"],
+:root[data-palette="whitelabel"]:not([data-theme="dark"]) {
+  --nui-bg: #fafafa;
+  --nui-bg-accent: #f0f0f0;
+  --nui-fg: #0a0a0a;
+  --nui-muted: #555555;
+  --nui-subtle: #999999;
+  --nui-border: #111111;
+  --nui-accent: #ff2d78;
+  --nui-accent-fg: #fafafa;
+  --accent-2: #b8e600;
+  --hairline: #111111;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Bitter', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+  --display-transform: uppercase;
+  --display-spacing: -0.01em;
+  --display-weight: 800;
+  --radius: 0px;
+  --radius-control: 0px;
+  --border-w: 2px;
+  --shadow-card: 4px 4px 0 var(--nui-fg);
+  --nui-thead-bg: rgba(255, 45, 120, 0.88);
+}
+
+:root[data-palette="whitelabel"][data-theme="dark"] {
+  --nui-bg: #0a0a0a;
+  --nui-bg-accent: #161616;
+  --nui-fg: #fafafa;
+  --nui-muted: #aaaaaa;
+  --nui-subtle: #777777;
+  --nui-border: #fafafa;
+  --nui-accent: #ff2d78;
+  --nui-accent-fg: #0a0a0a;
+  --accent-2: #c6ff00;
+  --hairline: #2e2e2e;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Bitter', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+  --display-transform: uppercase;
+  --display-spacing: -0.01em;
+  --display-weight: 800;
+  --radius: 0px;
+  --radius-control: 0px;
+  --border-w: 2px;
+  --shadow-card: 4px 4px 0 var(--nui-fg);
+  --nui-thead-bg: rgba(255, 45, 120, 0.85);
+
+  --nui-badge-success-bg: rgba(74, 222, 128, 0.12);
+  --nui-badge-success-fg: #4ade80;
+  --nui-badge-warning-bg: rgba(251, 191, 36, 0.12);
+  --nui-badge-warning-fg: #fbbf24;
+  --nui-badge-error-bg: rgba(248, 113, 113, 0.12);
+  --nui-badge-error-fg: #f87171;
+  --nui-badge-info-bg: rgba(56, 189, 248, 0.12);
+  --nui-badge-info-fg: #38bdf8;
+}
+
+/* ─── SPEED ────────────────────────────────────────────────────────────────── */
+
+:root[data-palette="speed"][data-theme="light"],
+:root[data-palette="speed"]:not([data-theme="dark"]) {
+  /* Neutrals are crimson-tinted (not straight slate/black): text is a very dark red, grays warm
+     toward the accent hue, so the whole page sits in one temperature. */
+  --nui-bg: #ffffff;
+  --nui-bg-accent: #f8f3f5;
+  --nui-fg: #33101c;
+  --nui-muted: #8b6a75;
+  --nui-subtle: #b39aa4;
+  --nui-border: #eee0e4;
+  --nui-accent: #bb0231;
+  --nui-accent-fg: #ffffff;
+  --accent-2: #0891b2;
+  --hairline: #f4eaed;
+
+  --font-display: 'DM Sans', ui-sans-serif, sans-serif;
+  --font-body: 'DM Sans', ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', monospace;
+  --display-transform: none;
+  --display-spacing: -0.02em;
+  --display-weight: 700;
+  --radius: 6px;
+  --radius-control: 5px;
+  --border-w: 1px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --nui-thead-bg: rgba(187, 2, 49, 0.82);
+  --nui-thead-blur: 10px;
+  --font-brand: 'Saira', sans-serif;
+}
+
+:root[data-palette="speed"][data-theme="dark"] {
+  /* Crimson-tinted darks: the near-black leans dark red, grays warm toward the accent hue. */
+  --nui-bg: #190e13;
+  --nui-bg-accent: #2a1a21;
+  --nui-fg: #f7eef1;
+  --nui-muted: #b499a3;
+  --nui-subtle: #8a6b77;
+  --nui-border: #4a2f3a;
+  --nui-accent: #e0173f;
+  --nui-accent-fg: #ffffff;
+  --accent-2: #22d3ee;
+  --hairline: #2a1a21;
+
+  --font-display: 'DM Sans', ui-sans-serif, sans-serif;
+  --font-body: 'DM Sans', ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', monospace;
+  --display-transform: none;
+  --display-spacing: -0.02em;
+  --display-weight: 700;
+  --radius: 6px;
+  --radius-control: 5px;
+  --border-w: 1px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --nui-thead-bg: rgba(224, 23, 63, 0.80);
+  --nui-thead-blur: 10px;
+  --font-brand: 'Saira', sans-serif;
+
+  --nui-badge-success-bg: rgba(74, 222, 128, 0.12);
+  --nui-badge-success-fg: #4ade80;
+  --nui-badge-warning-bg: rgba(251, 191, 36, 0.12);
+  --nui-badge-warning-fg: #fbbf24;
+  --nui-badge-error-bg: rgba(248, 113, 113, 0.12);
+  --nui-badge-error-fg: #f87171;
+  --nui-badge-info-bg: rgba(56, 189, 248, 0.12);
+  --nui-badge-info-fg: #38bdf8;
+}
+
+/* ─── SPEED — component tweaks ─────────────────────────────────────────────── */
+/* Flat detail cards: on Speed the surface is clean, so the panel shadow comes off (the hairline
+   border alone separates them). */
+:root[data-palette="speed"] .nui-card { box-shadow: none; }
+
+/* Detail values read too small against the card whitespace — give them size and a touch of weight
+   so the data anchors each card instead of floating in it. Labels stay compact for the contrast. */
+:root[data-palette="speed"] .nui-detail dd { font-size: 0.98rem; line-height: 1.45; }
+:root[data-palette="speed"] .nui-detail dd :where(a, .nui-text) { font-weight: 500; }
+
+/* Edit mode was too faint — Speed's base border is a near-white pink, so an editable cell barely
+   reads as an input. Firm the outlines and mark focus with the crimson accent. */
+:root[data-palette="speed"] .nui-detail :is(input, select, textarea) {
+  border-color: color-mix(in oklab, var(--nui-accent) 30%, var(--nui-border));
+  background: color-mix(in oklab, var(--nui-accent) 3%, var(--nui-bg));
+}
+:root[data-palette="speed"] .nui-detail :is(input, select, textarea):focus,
+:root[data-palette="speed"] .nui-detail :is(input, select, textarea):focus-visible {
+  border-color: var(--nui-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--nui-accent) 15%, transparent);
+}
+
+/* ─── GLOBAL SHELL STYLES ─────────────────────────────────────────────────── */
+/* All values come from CSS variables — no hardcoded colors/fonts/radius.      */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--nui-bg);
+  color: var(--nui-fg);
+  font-family: var(--font-body);
+}
+
+/* Keyboard focus in the theme's own voice — the browser-default blue ring clashes with every
+   palette. :where keeps specificity at zero so component-level focus styles still win. */
+:where(button, a, [role='option'], [role='radio'], select, [tabindex]):focus-visible {
+  outline: 2px solid var(--nui-accent);
+  outline-offset: 1px;
+}
+
+/* ─── PRINT: the report layout ────────────────────────────────────────────── */
+/* The printer icon swaps to this via window.print(). The fluent narrate title becomes the report
+   header (contract I1 extends to paper); chrome disappears; the table goes ink-friendly. */
+
+.print-header { display: none; }
+
+@media print {
+  @page { margin: 12mm; }
+
+  /* chrome off — AND the viewport cage: the app shell is a 100dvh overflow-hidden flex layout
+     with an inner scroll area; left as-is, print clips to ONE page. Everything must flow. */
+  .nui-sidebar, .nui-scrim, .print-hide { display: none !important; }
+  .nui-shell { display: block !important; height: auto !important; overflow: visible !important; }
+  .nui-content { display: block !important; margin: 0; padding: 0; overflow: visible !important; }
+  .nui-scroll-area { overflow: visible !important; height: auto !important; }
+  html, body { background: #fff; color: #000; height: auto !important; overflow: visible !important; }
+
+  /* the report header */
+  .print-header { display: block; margin-bottom: 6mm; }
+  .print-header h1 { font-size: 18pt; font-weight: 700; margin: 0 0 2mm; color: #000; }
+  .print-header p { font-size: 10pt; margin: 0; color: #333; }
+  .print-header .print-meta { margin-top: 1mm; color: #666; }
+
+  /* leftover chrome inside the content column (hamburger / expand tab) */
+  .nui-content > button { display: none !important; }
+
+  /* ink-friendly table: no tinted surfaces, black text, hairline rules.
+     CRITICAL: the width engine sizes columns for the SCREEN — its inline pixel widths overflow A4
+     and Chromium CLIPS the right-hand columns. !important beats inline styles: let print re-flow. */
+  table { font-size: 8pt; width: 100% !important; table-layout: auto !important; }
+  col, th, td { width: auto !important; min-width: 0 !important; max-width: none !important; }
+  th, td { padding-top: 3px !important; padding-bottom: 3px !important; padding-left: 4px !important; padding-right: 4px !important; }
+  /* nowrap/truncate utilities block the auto layout from squeezing — paper wraps instead */
+  th, td, th *, td * { white-space: normal !important; overflow: visible !important; text-overflow: clip !important; }
+  /* interactive-only icons inside the table (chooser, carets, collapse-all) — never on paper */
+  thead [class*='i-lucide-'], tr[class*='group-row'] [class*='i-lucide-'], tr[class*='subtotal'] [class*='i-lucide-'] { display: none !important; }
+  thead, thead th, thead td {
+    position: static !important;
+    background: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  /* header labels carry their own accent-fg (white) class — force EVERY descendant to ink */
+  thead, thead * { color: #000 !important; }
+  thead tr:first-child { border-bottom: 1.5px solid #000; }
+  tbody tr { border-bottom: 0.5px solid #bbb; break-inside: avoid; }
+  tbody tr[class*='group-row'] td { background: none !important; border-top: 1px solid #000; font-weight: 600; }
+  tbody tr[class*='subtotal'] td { background: none !important; }
+  a, .nui-link, .text-data { color: #000 !important; text-decoration: none; }
+  /* interactive-only glyphs off (funnels, sort hints); covers stay — hiding a td would shift columns */
+  thead [class*='list-filter'], .nui-sort-hint { display: none !important; }
+}
+
+/* Headings use the display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  text-transform: var(--display-transform);
+  letter-spacing: var(--display-spacing);
+  font-weight: var(--display-weight);
+}
+
+code, pre, kbd {
+  font-family: var(--font-mono);
+}
+
+/* Two-kingdoms colour split: --nui-accent = FUNCTION (chrome, structure, controls);
+   --accent-2 = DATA (record links, favourites — the collection speaking). */
+.text-data {
+  color: var(--accent-2);
+}
+
+/* Data link (artist/label): the row hover tints the whole row; hovering the link itself gives a
+   stronger, link-scoped highlight, and pressing it shows an :active state. */
+.nui-link {
+  color: var(--accent-2);
+  border-radius: 5px;
+  transition: background-color 0.12s ease, text-decoration-color 0.12s ease;
+}
+.nui-link:hover {
+  text-decoration: underline;
+  background: color-mix(in oklab, var(--accent-2) 15%, transparent);
+}
+.nui-link:active {
+  background: color-mix(in oklab, var(--accent-2) 30%, transparent);
+}
+
+/* Sticky table header — pins to top of the scroll area, not the viewport */
+.nui-scroll-area thead {
+  top: 0;
+}

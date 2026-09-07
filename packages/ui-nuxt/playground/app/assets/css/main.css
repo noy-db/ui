@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* The module's runtime ships as source in node_modules-land; point Tailwind's source
+   detection at it so the classes used by our components are generated. */
+@source "../../../../src/runtime";

@@ -1,0 +1,85 @@
+{
+  "name": "@noy-db/ui-suai",
+  "version": "0.4.0-pre.0",
+  "description": "Flagship rendering fork of @noy-db/ui for Nuxt: schema-driven list + detail components with full multi-palette theming, progressively adopting SUAI components. Domain-free; consumes collection.describe().",
+  "type": "module",
+  "license": "MIT",
+  "author": "vLannaAi <vicio@lanna.ai>",
+  "homepage": "https://github.com/noy-db/ui/tree/main/packages/ui-suai#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noy-db/ui.git",
+    "directory": "packages/ui-suai"
+  },
+  "bugs": {
+    "url": "https://github.com/noy-db/ui/issues"
+  },
+  "keywords": [
+    "noy-db",
+    "nuxt",
+    "nuxt-module",
+    "schema-driven",
+    "data-table",
+    "vue",
+    "suai"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/module.js",
+  "types": "./dist/module.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/module.d.ts",
+      "default": "./dist/module.js"
+    },
+    "./module": {
+      "types": "./dist/module.d.ts",
+      "default": "./dist/module.js"
+    },
+    "./core": "./dist/runtime/core/index.ts",
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup && unocss \"src/runtime/{components,internal}/**/*.vue\" --config uno.config.ts -o dist/style.css",
+    "build:css": "unocss \"src/runtime/{components,internal}/**/*.vue\" --config uno.config.ts -o dist/style.css",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "peerDependencies": {
+    "@noy-db/hub": "^0.6.0-pre.0 || ^0.7.0-pre.0",
+    "vue": "^3.5.0",
+    "@nuxt/kit": "^3.0.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/kit": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@noy-db/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.114",
+    "@noy-db/hub": "0.7.0-pre.2",
+    "@noy-db/ui": "workspace:*",
+    "@nuxt/kit": "^4.0.0",
+    "@nuxt/schema": "^4.0.0",
+    "@unocss/cli": "^66.7.2",
+    "nuxt": "^4.0.0",
+    "unocss": "^66.7.2",
+    "vue": "^3.5.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "noy-db-ui-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The noy-db UI family — schema-driven list + detail components for noy-db vaults. Framework-agnostic base (@noy-db/ui) + Nuxt binding (@noy-db/ui-nuxt).",
+  "license": "MIT",
+  "author": "vLannaAi <vicio@lanna.ai>",
+  "homepage": "https://github.com/noy-db/ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noy-db/ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noy-db/ui/issues"
+  },
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:scripts": "vitest run --project scripts",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "release": "pnpm run build && changeset publish --tag \"${DIST_TAG:-latest}\"",
+    "changeset": "changeset"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.0",
+    "@eslint/js": "^9.18.0",
+    "eslint": "^9.18.0",
+    "semver": "^7.6.0",
+    "tsup": "^8.4.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.21.0",
+    "vitest": "^3.0.0",
+    "vue-tsc": "^3.3.5"
+  }
+}

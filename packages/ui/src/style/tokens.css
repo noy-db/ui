@@ -1,0 +1,27 @@
+/* Default design tokens for @noy-db/ui. A consuming app overrides any of these on :root to
+   reskin the whole library without touching component source. Defaults are a neutral slate with
+   a blue accent; a host app maps --nui-accent to its own brand color, etc. */
+:root {
+  --nui-accent: #2563eb;
+  --nui-accent-fg: #ffffff;
+  --nui-fg: #0f172a;
+  --nui-muted: #64748b;
+  --nui-subtle: #94a3b8;
+  --nui-border: #e2e8f0;
+  --nui-bg: #ffffff;
+  --nui-bg-accent: #f1f5f9;
+  --nui-danger: #dc2626;
+}
+
+/* Dark theme — a host (or useTheme()) sets data-theme="dark" on <html>. Overrides the defaults. */
+:root[data-theme="dark"] {
+  --nui-accent: #3b82f6;
+  --nui-accent-fg: #ffffff;
+  --nui-fg: #e2e8f0;
+  --nui-muted: #94a3b8;
+  --nui-subtle: #64748b;
+  --nui-border: #334155;
+  --nui-bg: #0f172a;
+  --nui-bg-accent: #1e293b;
+  --nui-danger: #f87171;
+}

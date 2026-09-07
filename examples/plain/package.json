@@ -1,0 +1,32 @@
+{
+  "name": "@noy-db/example-plain",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxi dev",
+    "seed": "tsx scripts/seed.ts",
+    "postinstall": "nuxi prepare"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "1.2.114",
+    "@noy-db/as-noydb": "0.7.0-pre.2",
+    "@noy-db/hub": "0.7.0-pre.2",
+    "@noy-db/to-memory": "0.7.0-pre.2",
+    "@noy-db/ui": "file:../../packages/ui",
+    "@noy-db/ui-nuxt": "file:../../packages/ui-nuxt",
+    "@nuxt/ui": "^4.0.0",
+    "nuxt": "^4.0.0",
+    "vue": "^3.5.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@noy-db/attestation": "0.7.0-pre.2",
+      "@noy-db/ui": "file:../../packages/ui"
+    }
+  }
+}

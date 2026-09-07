@@ -1,0 +1,79 @@
+{
+  "name": "@noy-db/ui-nuxt",
+  "version": "0.4.0-pre.0",
+  "description": "Nuxt UI fork of the noy-db UI family: schema-driven list + detail components built on @nuxt/ui primitives, standard app.config theming, deliberately plain. Domain-free; consumes collection.describe().",
+  "type": "module",
+  "license": "MIT",
+  "author": "vLannaAi <vicio@lanna.ai>",
+  "homepage": "https://github.com/noy-db/ui/tree/main/packages/ui-nuxt#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noy-db/ui.git",
+    "directory": "packages/ui-nuxt"
+  },
+  "bugs": {
+    "url": "https://github.com/noy-db/ui/issues"
+  },
+  "keywords": [
+    "noy-db",
+    "nuxt",
+    "nuxt-module",
+    "nuxt-ui",
+    "schema-driven",
+    "data-table",
+    "vue"
+  ],
+  "main": "./dist/module.js",
+  "types": "./dist/module.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/module.d.ts",
+      "default": "./dist/module.js"
+    },
+    "./module": {
+      "types": "./dist/module.d.ts",
+      "default": "./dist/module.js"
+    },
+    "./core": "./dist/runtime/core/index.ts"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "vue-tsc --noEmit",
+    "lint": "eslint src/"
+  },
+  "peerDependencies": {
+    "@noy-db/hub": "^0.6.0-pre.0 || ^0.7.0-pre.0",
+    "vue": "^3.5.0",
+    "@nuxt/kit": "^3.0.0 || ^4.0.0",
+    "@nuxt/ui": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/kit": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@noy-db/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@noy-db/hub": "0.7.0-pre.2",
+    "@noy-db/ui": "workspace:*",
+    "@nuxt/kit": "^4.0.0",
+    "@nuxt/schema": "^4.0.0",
+    "nuxt": "^4.0.0",
+    "vue": "^3.5.0",
+    "@nuxt/ui": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  }
+}
