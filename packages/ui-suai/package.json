@@ -1,9 +1,9 @@
 {
   "name": "@noy-db/ui-suai",
-  "version": "0.4.0-pre.0",
+  "version": "0.8.0-pre.0",
   "description": "Flagship rendering fork of @noy-db/ui for Nuxt: schema-driven list + detail components with full multi-palette theming, progressively adopting SUAI components. Domain-free; consumes collection.describe().",
   "type": "module",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "vLannaAi <vicio@lanna.ai>",
   "homepage": "https://github.com/noy-db/ui/tree/main/packages/ui-suai#readme",
   "repository": {
@@ -43,7 +43,8 @@
   "files": [
     "dist",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "NOTICE"
   ],
   "engines": {
     "node": ">=20.0.0"
@@ -55,7 +56,7 @@
     "lint": "eslint src/"
   },
   "peerDependencies": {
-    "@noy-db/hub": "^0.6.0-pre.0 || ^0.7.0-pre.0",
+    "@noy-db/hub": "^0.6.0-pre.0 || ^0.7.0-pre.0 || ^0.8.0-pre.0",
     "vue": "^3.5.0",
     "@nuxt/kit": "^3.0.0 || ^4.0.0"
   },
@@ -69,7 +70,7 @@
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.114",
-    "@noy-db/hub": "0.7.0-pre.2",
+    "@noy-db/hub": "0.8.0-pre.0",
     "@noy-db/ui": "workspace:*",
     "@nuxt/kit": "^4.0.0",
     "@nuxt/schema": "^4.0.0",

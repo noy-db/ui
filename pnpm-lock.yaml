@@ -42,11 +42,11 @@ importers:
   packages/ui:
     devDependencies:
       '@noy-db/hub':
-        specifier: 0.7.0-pre.2
-        version: 0.7.0-pre.2
+        specifier: 0.8.0-pre.0
+        version: 0.8.0-pre.0(zod@4.4.3)
       '@noy-db/to-memory':
-        specifier: 0.7.0-pre.2
-        version: 0.7.0-pre.2(@noy-db/hub@0.7.0-pre.2)
+        specifier: 0.8.0-pre.0
+        version: 0.8.0-pre.0(@noy-db/hub@0.8.0-pre.0(zod@4.4.3))
       vue:
         specifier: ^3.5.0
         version: 3.5.39(typescript@5.9.3)
@@ -61,8 +61,8 @@ importers:
         version: link:../ui
     devDependencies:
       '@noy-db/hub':
-        specifier: 0.7.0-pre.2
-        version: 0.7.0-pre.2
+        specifier: 0.8.0-pre.0
+        version: 0.8.0-pre.0(zod@4.4.3)
       '@nuxt/kit':
         specifier: ^4.0.0
         version: 4.4.8(magicast@0.5.3)
@@ -89,8 +89,8 @@ importers:
         specifier: ^1.2.114
         version: 1.2.114
       '@noy-db/hub':
-        specifier: 0.7.0-pre.2
-        version: 0.7.0-pre.2
+        specifier: 0.8.0-pre.0
+        version: 0.8.0-pre.0(zod@4.4.3)
       '@nuxt/kit':
         specifier: ^4.0.0
         version: 4.4.8(magicast@0.5.3)
@@ -849,24 +849,27 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@noy-db/attestation@0.7.0-pre.2':
-    resolution: {integrity: sha512-i3mC6r4SU/0OON/hdKmlNBLd295pdJTlt/HDQx2CS+6Txo2OZouPbbs+JZeVcpLeaaReOAvkpr4gEm+ZuWDYXA==}
+  '@noy-db/attestation@0.8.0-pre.0':
+    resolution: {integrity: sha512-lOZ41aCx6mPF3VZhfGHzWvU+sL04+hGcnkwqGKB6Q1BHAkZhl63WFlpPmYUcEV3E6gbJHPWCHRFDi1tdJrhIjA==}
     engines: {node: '>=22.0.0'}
 
-  '@noy-db/hub@0.7.0-pre.2':
-    resolution: {integrity: sha512-GsbI8y/J0ICHrfZvefU0LYdC3VDQbPBFkCTeZPN1tsq7ZB3Lq44ev6jWlGG4Uca4poZUsBHP+Cnb1E1/aW9EtA==}
+  '@noy-db/hub@0.8.0-pre.0':
+    resolution: {integrity: sha512-B/ceSYi+v5KyZ8fUYKUQeodF3X0w/9WPh1XK7+7BI3qssntBnFW1XrCfFCLvwHD09vYXZ5R4zhGepgsFI69O7w==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
+      zod: ^3.0.0 || ^4.0.0
       zod-to-json-schema: ^3.25.0
     peerDependenciesMeta:
+      zod:
+        optional: true
       zod-to-json-schema:
         optional: true
 
-  '@noy-db/to-memory@0.7.0-pre.2':
-    resolution: {integrity: sha512-KcM4PDDz2cSBxu6QRvdGBGNzKwoSKoVdXjuhT79TlVASbcDIAAAPFoIQl7p4qDXRhd5m9sXSWXHZ+QI4vk6r+w==}
+  '@noy-db/to-memory@0.8.0-pre.0':
+    resolution: {integrity: sha512-SzYJU4iDuWkS92/8ess7g+gMBVMIRb2w9PvfLb4kEicLZ0WBLWZmvME/zfd3/xVxmxQU1q1UbiFxNr2QW8tWEQ==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
-      '@noy-db/hub': 0.7.0-pre.2
+      '@noy-db/hub': ^0.8.0-pre.0
 
   '@nuxt/cli@3.36.1':
     resolution: {integrity: sha512-qu0LLFjOr1alMSrcVb3k3fWYXGeETeOIN5UoGoGEjwWVtf+KxQbN5IAzdXb7ip5D3pfKLcrAOTbIGf9XFmeGFQ==}
@@ -3229,6 +3232,7 @@ packages:
   eslint@9.39.4:
     resolution: {integrity: sha512-XoMjdBOwe/esVgEvLmNsD3IRHkm7fbKIUGvrleloJXUZgDHig2IPWNniv+GwjyJXzuNqVjlr5+4yVUZjycJwfQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -6337,15 +6341,17 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
 
-  '@noy-db/attestation@0.7.0-pre.2': {}
+  '@noy-db/attestation@0.8.0-pre.0': {}
 
-  '@noy-db/hub@0.7.0-pre.2':
+  '@noy-db/hub@0.8.0-pre.0(zod@4.4.3)':
     dependencies:
-      '@noy-db/attestation': 0.7.0-pre.2
+      '@noy-db/attestation': 0.8.0-pre.0
+    optionalDependencies:
+      zod: 4.4.3
 
-  '@noy-db/to-memory@0.7.0-pre.2(@noy-db/hub@0.7.0-pre.2)':
+  '@noy-db/to-memory@0.8.0-pre.0(@noy-db/hub@0.8.0-pre.0(zod@4.4.3))':
     dependencies:
-      '@noy-db/hub': 0.7.0-pre.2
+      '@noy-db/hub': 0.8.0-pre.0(zod@4.4.3)
 
   '@nuxt/cli@3.36.1(@nuxt/schema@4.4.8)(cac@6.7.14)(magicast@0.5.3)':
     dependencies:

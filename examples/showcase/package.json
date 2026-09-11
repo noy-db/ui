@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.69.0",
-    "@noy-db/as-noydb": "0.7.0-pre.2",
-    "@noy-db/hub": "0.7.0-pre.2",
-    "@noy-db/to-memory": "0.7.0-pre.2",
+    "@noy-db/as-noydb": "0.8.0-pre.0",
+    "@noy-db/hub": "0.8.0-pre.0",
+    "@noy-db/to-memory": "0.8.0-pre.0",
     "@noy-db/ui": "file:../../packages/ui",
     "@noy-db/ui-suai": "file:../../packages/ui-suai",
     "nuxt": "^4.0.0",
@@ -30,7 +30,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@noy-db/attestation": "0.7.0-pre.2",
+      "@noy-db/attestation": "0.8.0-pre.0",
       "@noy-db/ui": "file:../../packages/ui"
     }
   }
