@@ -3,6 +3,25 @@
 All notable changes to `@noy-db/ui` are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning will follow the noy-db line on release.
 
+## [0.8.0-pre.0] — 2026-09-11
+
+**Relicensed, and onto the hub 0.8 line.**
+
+### Licence
+
+- Relicensed from MIT to Apache-2.0 from this version on. Earlier versions remain MIT.
+- The tarball now carries `LICENSE` (Apache-2.0) and `NOTICE`; both are listed in `files`,
+  and the `check-license` gate enforces that they are present on disk rather than merely
+  declared.
+
+### Compatibility
+
+- **Peer range widened by appending, not narrowed**: `^0.6.0-pre.0 || ^0.7.0-pre.0 || ^0.8.0-pre.0`,
+  uniform across all three packages. A consumer on a `0.6.x` or `0.7.x` hub keeps it; nothing
+  compels an upgrade.
+- Exact dev pins move to `@noy-db/hub@0.8.0-pre.0` and `@noy-db/to-memory@0.8.0-pre.0`.
+- `repository.url` points at `github.com/noy-db/ui`.
+
 ## [0.4.0-pre.0] — 2026-08-24
 
 **Onto the hub 0.7 line.**

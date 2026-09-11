@@ -3,6 +3,11 @@
   "manager": "pnpm",
   "binds": "@noy-db/hub/introspection",
   "publishes": true,
-  "gates": ["versions-uniform"],
-  "localChecks": ["pnpm test:scripts"]
+  "gates": [
+    "versions-uniform",
+    "check-license"
+  ],
+  "localChecks": [
+    "pnpm test:scripts"
+  ]
 }
