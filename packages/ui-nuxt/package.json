@@ -1,6 +1,6 @@
 {
   "name": "@noy-db/ui-nuxt",
-  "version": "0.8.0-pre.0",
+  "version": "0.8.0",
   "description": "Nuxt UI fork of the noy-db UI family: schema-driven list + detail components built on @nuxt/ui primitives, standard app.config theming, deliberately plain. Domain-free; consumes collection.describe().",
   "type": "module",
   "license": "Apache-2.0",
@@ -65,7 +65,7 @@
     "@noy-db/ui": "workspace:*"
   },
   "devDependencies": {
-    "@noy-db/hub": "0.8.0-pre.0",
+    "@noy-db/hub": "0.8.0",
     "@noy-db/ui": "workspace:*",
     "@nuxt/kit": "^4.0.0",
     "@nuxt/schema": "^4.0.0",
