@@ -65,4 +65,4 @@ See [CLAUDE.md](CLAUDE.md) for the build shapes and conventions.
 
 ## License
 
-[MIT](LICENSE) © vLannaAi
+[Apache-2.0](LICENSE) © vLannaAi
