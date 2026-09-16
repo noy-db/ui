@@ -3,6 +3,18 @@
 All notable changes to `@noy-db/ui-nuxt` are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning will follow the noy-db line on release.
 
+## [0.8.0] — 2026-09-14
+
+Lockstep bump to 0.8.0; no package-level change in this release. See `@noy-db/hub` 0.8.0 for the
+line's notes.
+
+### Compatibility
+
+- No source change since `0.8.0-pre.0` — `git diff v0.8.0-pre.0..v0.8.0 -- packages/ui-nuxt/src` is
+  empty. This entry records a version-and-pinning event, not a behaviour change.
+- Exact dev pin moves to `@noy-db/hub@0.8.0`.
+- Peer range unchanged: `^0.6.0-pre.0 || ^0.7.0-pre.0 || ^0.8.0-pre.0`.
+
 ## [0.8.0-pre.0] — 2026-09-11
 
 **Relicensed, and onto the hub 0.8 line.**
