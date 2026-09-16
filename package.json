@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "The noy-db UI family — schema-driven list + detail components for noy-db vaults. Framework-agnostic base (@noy-db/ui) + Nuxt binding (@noy-db/ui-nuxt).",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "vLannaAi <vicio@lanna.ai>",
   "homepage": "https://github.com/noy-db/ui#readme",
   "repository": {
