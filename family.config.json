@@ -5,7 +5,8 @@
   "publishes": true,
   "gates": [
     "versions-uniform",
-    "check-license"
+    "check-license",
+    "changeset-names"
   ],
   "localChecks": [
     "pnpm test:scripts"
