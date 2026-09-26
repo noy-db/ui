@@ -7,7 +7,6 @@
     "seed": "tsx scripts/seed.ts",
     "dev": "nuxi dev",
     "generate": "nuxi generate",
-    "postinstall": "nuxi prepare",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
