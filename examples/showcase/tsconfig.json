@@ -5,9 +5,15 @@
     "moduleResolution": "Bundler",
     "strict": true,
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "esModuleInterop": true,
     "verbatimModuleSyntax": false
   },
-  "include": ["src", "scripts"]
+  "include": [
+    "src",
+    "scripts",
+    "test"
+  ]
 }

@@ -1,4 +1,4 @@
-import { ref, lookup, type Vault, type Collection } from '@noy-db/hub'
+import { ref, lookup, type Vault, type Collection, type FieldMeta } from '@noy-db/hub'
 import { i18nText } from '@noy-db/hub/i18n'
 import { COVER_FIELD } from './vault'
 import { ArtistSchema, LabelSchema, RecordSchema, GENRES, FORMATS, CONDITIONS } from './types'
@@ -20,8 +20,8 @@ function staticLookup(dimension: string, table: Record<string, Record<string, st
 }
 
 // fieldMeta builder: English label + per-field overrides.
-function fieldMeta(collection: string, overrides: Record<string, Record<string, unknown>> = {}) {
-  const out: Record<string, Record<string, unknown>> = {}
+function fieldMeta(collection: string, overrides: Record<string, Partial<FieldMeta>> = {}): Record<string, FieldMeta> {
+  const out: Record<string, FieldMeta> = {}
   for (const [key, l] of Object.entries(FIELD_LABELS[collection]!)) {
     out[key] = { label: l.en, ...(overrides[key] ?? {}) }
   }

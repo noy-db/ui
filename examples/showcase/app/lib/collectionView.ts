@@ -38,8 +38,8 @@ export function buildRecordsView(vault: Vault) {
   const applyName  = (r: Record<string, unknown>) => applyI18nLocale(r, { name: NAME_I18N }, loc)
   const applyTitle = (r: Record<string, unknown>) => applyI18nLocale(r, { title: TITLE_I18N }, loc)
 
-  const artistRows = artists.query().toArray().map(applyName) as Record<string, unknown>[]
-  const labelRows  = labels.query().toArray().map(applyName) as Record<string, unknown>[]
+  const artistRows = (artists.query().toArray() as Record<string, unknown>[]).map(applyName)
+  const labelRows  = (labels.query().toArray() as Record<string, unknown>[]).map(applyName)
 
   const legs: JoinLeg[] = [
     { schema: artistsSchema, rows: artistRows, localKey: 'artistId', fields: ['name'], as: 'artist' },
@@ -71,7 +71,7 @@ export function buildRecordsView(vault: Vault) {
     ;(f as { aliases?: readonly string[] }).aliases = [l]
   }
   const rows = joinedRows(
-    records.query().toArray().map(applyTitle) as Record<string, unknown>[],
+    (records.query().toArray() as Record<string, unknown>[]).map(applyTitle),
     legs,
   )
 

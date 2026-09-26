@@ -6,21 +6,21 @@ export const CONDITIONS = ['M', 'NM', 'VG+', 'VG', 'G'] as const
 
 export const ArtistSchema = z.object({
   id: z.string(),
-  name: z.record(z.string()),
+  name: z.record(z.string(), z.string()),
   country: z.string(),       // ISO-3166 alpha-2 (semanticType: country)
   formedYear: z.number().int(),
   genre: z.enum(GENRES),
 })
 export const LabelSchema = z.object({
   id: z.string(),
-  name: z.record(z.string()),
+  name: z.record(z.string(), z.string()),
   country: z.string(),
   founded: z.number().int(),
-  notes: z.record(z.string()).optional(),
+  notes: z.record(z.string(), z.string()).optional(),
 })
 export const RecordSchema = z.object({
   id: z.string(),
-  title: z.record(z.string()),
+  title: z.record(z.string(), z.string()),
   artistId: z.string(),
   labelId: z.string(),
   year: z.number().int().min(1900).max(2100),
