@@ -45,14 +45,14 @@ importers:
         specifier: ^0.69.0
         version: 0.69.0(zod@4.4.3)
       '@noy-db/as-noydb':
-        specifier: 0.8.0
-        version: 0.8.0(@noy-db/hub@0.8.0(zod@4.4.3))
+        specifier: 0.9.0-pre.0
+        version: 0.9.0-pre.0(@noy-db/hub@0.9.0-pre.2(zod@4.4.3))
       '@noy-db/hub':
-        specifier: 0.8.0
-        version: 0.8.0(zod@4.4.3)
+        specifier: 0.9.0-pre.2
+        version: 0.9.0-pre.2(zod@4.4.3)
       '@noy-db/to-memory':
-        specifier: 0.8.0
-        version: 0.8.0(@noy-db/hub@0.8.0(zod@4.4.3))
+        specifier: 0.9.0-pre.0
+        version: 0.9.0-pre.0(@noy-db/hub@0.9.0-pre.2(zod@4.4.3))
       '@noy-db/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -61,7 +61,7 @@ importers:
         version: link:../../packages/ui-suai
       nuxt:
         specifier: ^4.0.0
-        version: 4.4.8(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7))(@parcel/watcher@2.5.6)(@types/node@22.20.4)(@vue/compiler-sfc@3.5.39)(cac@6.7.14)(db0@0.3.4)(esbuild@0.28.1)(eslint@9.39.4(jiti@2.7.0))(ioredis@5.11.1)(lightningcss@1.32.0)(magicast@0.5.3)(optionator@0.9.4)(rollup-plugin-visualizer@7.0.1(rollup@4.62.2))(rollup@4.62.2)(terser@5.48.0)(tsx@4.23.15)(typescript@5.9.3)(vite@7.3.6(@types/node@22.20.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.15)(yaml@2.9.0))(vue-tsc@3.3.5(typescript@5.9.3))(yaml@2.9.0)
+        version: 4.4.8(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7))(@parcel/watcher@2.5.6)(@types/node@22.20.4)(@vue/compiler-sfc@3.5.39)(cac@6.7.14)(db0@0.3.4)(esbuild@0.28.1)(eslint@9.39.4(jiti@2.7.0))(ioredis@5.11.1)(lightningcss@1.32.0)(magicast@0.5.3)(optionator@0.9.4)(rollup-plugin-visualizer@7.0.1(rollup@4.62.2))(rollup@4.62.2)(srvx@0.11.17)(terser@5.48.0)(tsx@4.23.15)(typescript@5.9.3)(vite@7.3.6(@types/node@22.20.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.15)(yaml@2.9.0))(vue-tsc@3.3.5(typescript@5.9.3))(yaml@2.9.0)
       vue:
         specifier: ^3.5.0
         version: 3.5.39(typescript@5.9.3)
@@ -94,11 +94,11 @@ importers:
   packages/ui:
     devDependencies:
       '@noy-db/hub':
-        specifier: 0.8.0
-        version: 0.8.0(zod@4.4.3)
+        specifier: 0.9.0-pre.2
+        version: 0.9.0-pre.2(zod@4.4.3)
       '@noy-db/to-memory':
-        specifier: 0.8.0
-        version: 0.8.0(@noy-db/hub@0.8.0(zod@4.4.3))
+        specifier: 0.9.0-pre.0
+        version: 0.9.0-pre.0(@noy-db/hub@0.9.0-pre.2(zod@4.4.3))
       vue:
         specifier: ^3.5.0
         version: 3.5.39(typescript@5.9.3)
@@ -113,8 +113,8 @@ importers:
         version: link:../ui
     devDependencies:
       '@noy-db/hub':
-        specifier: 0.8.0
-        version: 0.8.0(zod@4.4.3)
+        specifier: 0.9.0-pre.2
+        version: 0.9.0-pre.2(zod@4.4.3)
       '@nuxt/kit':
         specifier: ^4.0.0
         version: 4.4.8(magicast@0.5.3)
@@ -126,7 +126,7 @@ importers:
         version: 4.10.0(mzzfilesbwidujgyz2exp5yley)
       nuxt:
         specifier: ^4.0.0
-        version: 4.4.8(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7))(@parcel/watcher@2.5.6)(@types/node@22.20.4)(@vue/compiler-sfc@3.5.39)(cac@6.7.14)(db0@0.3.4)(esbuild@0.28.1)(eslint@9.39.4(jiti@2.7.0))(ioredis@5.11.1)(lightningcss@1.32.0)(magicast@0.5.3)(optionator@0.9.4)(rollup-plugin-visualizer@7.0.1(rollup@4.62.2))(rollup@4.62.2)(srvx@0.11.17)(terser@5.48.0)(tsx@4.23.15)(typescript@5.9.3)(vite@7.3.6(@types/node@22.20.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.15)(yaml@2.9.0))(vue-tsc@3.3.5(typescript@5.9.3))(yaml@2.9.0)
+        version: 4.4.8(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7))(@parcel/watcher@2.5.6)(@types/node@22.20.4)(@vue/compiler-sfc@3.5.39)(cac@6.7.14)(db0@0.3.4)(esbuild@0.28.1)(eslint@9.39.4(jiti@2.7.0))(ioredis@5.11.1)(lightningcss@1.32.0)(magicast@0.5.3)(optionator@0.9.4)(rollup-plugin-visualizer@7.0.1(rollup@4.62.2))(rollup@4.62.2)(terser@5.48.0)(tsx@4.23.15)(typescript@5.9.3)(vite@7.3.6(@types/node@22.20.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(tsx@4.23.15)(yaml@2.9.0))(vue-tsc@3.3.5(typescript@5.9.3))(yaml@2.9.0)
       vue:
         specifier: ^3.5.0
         version: 3.5.39(typescript@5.9.3)
@@ -141,8 +141,8 @@ importers:
         specifier: ^1.2.114
         version: 1.2.114
       '@noy-db/hub':
-        specifier: 0.8.0
-        version: 0.8.0(zod@4.4.3)
+        specifier: 0.9.0-pre.2
+        version: 0.9.0-pre.2(zod@4.4.3)
       '@nuxt/kit':
         specifier: ^4.0.0
         version: 4.4.8(magicast@0.5.3)
@@ -910,14 +910,14 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@noy-db/as-noydb@0.8.0':
-    resolution: {integrity: sha512-yt0nV7fRLgnhfVbFKGOgZxUd3+cBlIOPJFkA1/Sw5xuVBfwOcSA3mRrvKx+IE376/qlpigBqmPvVzt4j87uzYg==}
+  '@noy-db/as-noydb@0.9.0-pre.0':
+    resolution: {integrity: sha512-vMi9Kki3IKwyuwROmt+j5PpxJVvu4OtZGG3Uc69ckgkGKEt+WWM215J1lDrNQ7o2qAmN/fSES/Zj2rXVjRa6FQ==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
-      '@noy-db/hub': ^0.7.0 || ^0.7.1-pre.0 || ^0.8.0-pre.0
+      '@noy-db/hub': ^0.7.0 || ^0.7.1-pre.0 || ^0.8.0-pre.0 || ^0.9.0-pre.1
 
-  '@noy-db/hub@0.8.0':
-    resolution: {integrity: sha512-g4KjaZ4k2E44CZxmhyyVIIRn6sTGp/WZ/a+NTVD6OCpnK+2f2t8+tV4tEtkdzJ7bw9aej1jpxFocEaZuIpT8nQ==}
+  '@noy-db/hub@0.9.0-pre.2':
+    resolution: {integrity: sha512-FxN6P5InqIHRyylJHVO8vBUifY5Vomn9RLrCiXFS5E5XMA79yStFg1lG9dUNRCFfOhbo5Vk6uaGtDrx6XH14ow==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       zod: ^3.0.0 || ^4.0.0
@@ -928,11 +928,11 @@ packages:
       zod-to-json-schema:
         optional: true
 
-  '@noy-db/to-memory@0.8.0':
-    resolution: {integrity: sha512-hc+kr+ozIg0EnsbK/ovbYhli6O9Bo3zfOwJeF64K/uheGpP1ODbfXI9Bg98fS55YGadWYR635PbChpoSBcv90A==}
+  '@noy-db/to-memory@0.9.0-pre.0':
+    resolution: {integrity: sha512-z8xzrMJxkUAlnKrD4oLeMeb9rnNHr2zVq17yIxBOkNlKEXyItHR88Ae21Dj03XD8+sWSz0eQptklqU/3sTlWZA==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
-      '@noy-db/hub': ^0.8.0
+      '@noy-db/hub': ^0.8.0 || ^0.9.0-pre.1
 
   '@nuxt/cli@3.36.1':
     resolution: {integrity: sha512-qu0LLFjOr1alMSrcVb3k3fWYXGeETeOIN5UoGoGEjwWVtf+KxQbN5IAzdXb7ip5D3pfKLcrAOTbIGf9XFmeGFQ==}
@@ -6430,17 +6430,17 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
 
-  '@noy-db/as-noydb@0.8.0(@noy-db/hub@0.8.0(zod@4.4.3))':
+  '@noy-db/as-noydb@0.9.0-pre.0(@noy-db/hub@0.9.0-pre.2(zod@4.4.3))':
     dependencies:
-      '@noy-db/hub': 0.8.0(zod@4.4.3)
+      '@noy-db/hub': 0.9.0-pre.2(zod@4.4.3)
 
-  '@noy-db/hub@0.8.0(zod@4.4.3)':
+  '@noy-db/hub@0.9.0-pre.2(zod@4.4.3)':
     optionalDependencies:
       zod: 4.4.3
 
-  '@noy-db/to-memory@0.8.0(@noy-db/hub@0.8.0(zod@4.4.3))':
+  '@noy-db/to-memory@0.9.0-pre.0(@noy-db/hub@0.9.0-pre.2(zod@4.4.3))':
     dependencies:
-      '@noy-db/hub': 0.8.0(zod@4.4.3)
+      '@noy-db/hub': 0.9.0-pre.2(zod@4.4.3)
 
   '@nuxt/cli@3.36.1(@nuxt/schema@4.4.8)(cac@6.7.14)(magicast@0.5.3)':
     dependencies:

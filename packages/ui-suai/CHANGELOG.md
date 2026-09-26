@@ -1,5 +1,26 @@
 # Changelog — @noy-db/ui-suai
 
+## [0.9.0-pre.0] — 2026-09-26
+
+Joins the 0.9 line. All three packages move to `0.9.0-pre.0` together; no package-level
+source change.
+
+- `@noy-db/hub` peer range appends `^0.9.0-pre.1`, and the exact dev pin moves to
+  `0.9.0-pre.2`. `-pre.1` rather than `-pre.0` is deliberate: `pre.0` carries core#132
+  (last-writer-wins `_keyring` writes, `TamperedError` on a cold read) and nothing should
+  resolve to it. For a 0.x caret npm reads `^0.9.0-pre.1` as `>=0.9.0-pre.1 <0.10.0`, so it
+  already admits `0.9.0` stable with no second append.
+- `@noy-db/to-memory` and `@noy-db/as-noydb` dev pins move to `0.9.0-pre.0`. This repo is
+  the only satellite pinned to THREE version lines, so it is genuinely last in the publish
+  order: with hub at `0.9.0-pre.2` and those two still on 0.8, `pnpm install` reported
+  `unmet peer @noy-db/hub` for both. Those warnings are gone at this pin set.
+- `examples/showcase` is now a member of the root pnpm workspace, so its 13 test files run
+  under `pnpm test` and it typechecks for the first time. `examples/plain`'s duplicate copy
+  of `src/data/__tests__` (7 `cmp`-identical files, unrunnable there) is deleted.
+
+Green: 22 test files / 234 tests in `@noy-db/ui`, 13 files / 18 tests in `examples/showcase`,
+build, typecheck, lint.
+
 ## [0.8.0] — 2026-09-14
 
 Lockstep bump to 0.8.0; no package-level change in this release. See `@noy-db/hub` 0.8.0 for the
