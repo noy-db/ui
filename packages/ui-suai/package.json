@@ -1,6 +1,6 @@
 {
   "name": "@noy-db/ui-suai",
-  "version": "0.8.0",
+  "version": "0.9.0-pre.0",
   "description": "Flagship rendering fork of @noy-db/ui for Nuxt: schema-driven list + detail components with full multi-palette theming, progressively adopting SUAI components. Domain-free; consumes collection.describe().",
   "type": "module",
   "license": "Apache-2.0",
