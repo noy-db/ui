@@ -9,6 +9,7 @@
     "changeset-names"
   ],
   "localChecks": [
-    "pnpm test:scripts"
+    "pnpm test:scripts",
+    "pnpm knip"
   ]
 }

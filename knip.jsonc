@@ -1,0 +1,67 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+
+  // ⛔ EVERY IGNORE CARRIES A DISCRIMINATOR — a way to tell a knip BLIND SPOT from
+  // a defect here. A bare ignore is how a real finding gets silenced later.
+
+  // `examples/plain` is a SEPARATE pnpm workspace with its own `pnpm-workspace.yaml`
+  // and lockfile — deliberately, so it stays the witness that the packages install the
+  // way a consumer installs them. knip run at this root resolves against the ROOT
+  // graph, so every file there is an orphan to it. Auditing it needs a second run
+  // inside that workspace, which is a different question from "is this monorepo clean".
+  //   discriminator: `examples/plain/pnpm-workspace.yaml` exists and
+  //   `examples/showcase`'s does not — which is why showcase IS audited.
+  "ignore": [
+    "examples/plain/**",
+    // `packages/ui-nuxt/playground` is a Nuxt dev playground: `nuxi dev` discovers it
+    // by convention and nothing imports it. It ships in no tarball.
+    //   discriminator: it is absent from ui-nuxt's `files` array, so it is not
+    //   published; and `nuxt.config.ts` is what `pnpm -F ui-nuxt dev` loads.
+    "packages/ui-nuxt/playground/**"
+  ],
+
+  // An export used only inside its own file is not dead — it is a module-local
+  // constant that also happens to be exported. `VAULT_NAME` in showcase's data layer
+  // is read twice in the same file.
+  "ignoreExportsUsedInFile": true,
+
+  // `@iconify-json/lucide` is icon DATA, resolved by name at build time by unocss /
+  // Nuxt UI rather than imported. Config-referenced, so no import scan can see it.
+  //   discriminator: `git grep -l lucide` hits `uno.config.ts` / `nuxt.config.ts` and
+  //   no `.ts` under src/.
+  "ignoreDependencies": [
+    "@iconify-json/lucide",
+    // `scripts/peer-floor.mjs` loads semver through
+    //     const semver = createRequire(import.meta.url)('semver')
+    // — a runtime require built from a factory, which no static analyser can follow.
+    // ⚠️ family#33 recorded semver as an unused root devDependency in `ui`. It is NOT:
+    // `semver.minVersion` is load-bearing there. Removing it would break
+    // `pnpm test:scripts`.
+    //   discriminator: `grep -n semver scripts/peer-floor.mjs` shows the createRequire
+    //   line and two call sites.
+    "semver"
+  ],
+
+  "workspaces": {
+    // Nuxt discovers `app/**` by CONVENTION, not by import, so nothing there is
+    // reachable from an entry file. Everything else in this repo knip infers.
+    //   discriminator: deleting `app/pages/index.vue` breaks `pnpm dev`, which is the
+    //   opposite of dead code.
+    // `scripts/*.mjs` are run by `pnpm test:scripts` and by CI, not imported — so
+    // `semver`, which `scripts/peer-floor.mjs` imports, is only visible once they are
+    // entry points. ⚠️ family#33 recorded semver as an unused root devDependency in
+    // `ui`; it is NOT. That row was a missing entry pattern.
+    ".": { "entry": ["scripts/*.mjs"] },
+
+    "examples/showcase": { "entry": ["app/**/*.{ts,vue}", "scripts/*.ts"] },
+
+    // `ui-nuxt` and `ui-suai` are Nuxt MODULES: their entry is `src/module.ts`, and
+    // everything under `src/runtime/**` is loaded by Nuxt at runtime from the built
+    // output — by path, never by an import knip can follow.
+    //   discriminator: `package.json` `main` is `./dist/module.js` and the `exports`
+    //   map publishes `./module`; the runtime files are referenced as strings inside
+    //   `module.ts` via `addPlugin`/`addComponentsDir`.
+    "packages/ui-nuxt": { "entry": ["src/runtime/**/*.{ts,vue}"] },
+    "packages/ui-suai": { "entry": ["src/runtime/**/*.{ts,vue}"] }
+  }
+}
