@@ -1,5 +1,9 @@
 # Changelog — @noy-db/ui-suai
 
+## 0.9.0
+
+Lockstep bump to 0.9.0; no package-level change in this release. See `@noy-db/hub` 0.9.0 for the line's notes.
+
 ## [0.9.0-pre.0] — 2026-09-26
 
 Joins the 0.9 line. All three packages move to `0.9.0-pre.0` together; no package-level

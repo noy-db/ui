@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.0
+
+Lockstep bump to 0.9.0; no package-level change in this release. See `@noy-db/hub` 0.9.0 for the line's notes.
+
 All notable changes to `@noy-db/ui-nuxt` are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/); versioning will follow the noy-db line on release.
 
