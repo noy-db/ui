@@ -12,12 +12,7 @@
   //   discriminator: `examples/plain/pnpm-workspace.yaml` exists and
   //   `examples/showcase`'s does not — which is why showcase IS audited.
   "ignore": [
-    "examples/plain/**",
-    // `packages/ui-nuxt/playground` is a Nuxt dev playground: `nuxi dev` discovers it
-    // by convention and nothing imports it. It ships in no tarball.
-    //   discriminator: it is absent from ui-nuxt's `files` array, so it is not
-    //   published; and `nuxt.config.ts` is what `pnpm -F ui-nuxt dev` loads.
-    "packages/ui-nuxt/playground/**"
+    "examples/plain/**"
   ],
 
   // An export used only inside its own file is not dead — it is a module-local

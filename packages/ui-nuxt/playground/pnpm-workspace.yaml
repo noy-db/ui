@@ -1,3 +1,0 @@
-# Standalone install (detached from the repo root workspace), like examples/showcase:
-# file: deps on ../../ui resolve as a real install, matching how a consumer gets the package.
-packages: []
