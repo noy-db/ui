@@ -1,8 +1,9 @@
 # noy-db · Vinyl Showcase
 
-A static, browser-only Nuxt SPA that demonstrates `@noy-db/ui` and `@noy-db/ui-nuxt` against a
-real noy-db vault — a vinyl record collection with album, artist, and label collections, joins,
-Thai/English localization, encrypted cover-art blobs, and a guided balloon tour.
+A static, browser-only Nuxt SPA that demonstrates `@noy-db/ui` (the engine) and `@noy-db/ui-suai`
+(the SUAI binding, `--su-*` tokens) against a real noy-db vault — a vinyl record collection with
+album, artist, and label collections, joins, Thai/English localization, encrypted cover-art
+blobs, and a guided balloon tour.
 
 `ssr: false` — no server. Everything runs in the browser: vault decryption, schema-driven list/
 search/detail, cover blob round-trips, i18n switch, theme toggle.
@@ -15,9 +16,11 @@ spin-the-black-circle
 
 ## Prerequisites
 
-The `@noy-db/*` runtime packages are consumed **from npm at a pinned version**, exactly as an
-outside consumer would — no sibling checkout is needed. Only this repo's own UI packages are
-linked locally, via `file:` paths, so they must be built first.
+The `@noy-db/*` runtime packages (`hub`, `as-noydb`) are consumed **from npm at a pinned
+version**, exactly as an outside consumer would — no sibling checkout is needed. The vault runs on
+hub's built-in in-memory store (`createNoydb` with no `store`), so no `to-*` package is involved.
+This repo's own UI packages are linked as `workspace:*` — the showcase is a member of the root
+workspace — so they must be built first.
 
 ### 1. Build this repo's UI packages
 
@@ -29,12 +32,7 @@ pnpm install
 pnpm build
 ```
 
-### 2. Install
-
-```bash
-cd examples/showcase
-pnpm install
-```
+The root `pnpm install` also installs the showcase; it has no lockfile of its own.
 
 `public/demo.noydb` and `public/covers/` are **committed**, so the app runs as-is. `pnpm seed`
 re-runs `scripts/seed.ts` to regenerate them; you only need it if you change the dataset.
@@ -44,6 +42,7 @@ re-runs `scripts/seed.ts` to regenerate them; you only need it if you change the
 ### Dev server
 
 ```bash
+cd examples/showcase
 pnpm dev
 ```
 

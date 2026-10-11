@@ -56,9 +56,6 @@ importers:
       '@noy-db/hub':
         specifier: 0.10.0-pre.0
         version: 0.10.0-pre.0(zod@4.4.3)
-      '@noy-db/to-memory':
-        specifier: 0.10.0-pre.0
-        version: 0.10.0-pre.0(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))
       '@noy-db/ui':
         specifier: workspace:*
         version: link:../../packages/ui
