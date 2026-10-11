@@ -99,9 +99,6 @@ importers:
       '@noy-db/hub':
         specifier: 0.10.0-pre.0
         version: 0.10.0-pre.0(zod@4.4.3)
-      '@noy-db/to-memory':
-        specifier: 0.10.0-pre.0
-        version: 0.10.0-pre.0(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))
       vue:
         specifier: ^3.5.0
         version: 3.5.39(typescript@5.9.3)
@@ -951,12 +948,6 @@ packages:
         optional: true
       zod-to-json-schema:
         optional: true
-
-  '@noy-db/to-memory@0.10.0-pre.0':
-    resolution: {integrity: sha512-R5lSiCqr5ZMiJl87Ly7mrmruKyw7k5ZeV0pOyqx+yK90wy2X4WwX+xNcM902zToW+a7K/1WJGjHGESAqjQjOiw==}
-    engines: {node: '>=22.0.0'}
-    peerDependencies:
-      '@noy-db/hub': ^0.8.0 || ^0.9.0-pre.1 || ^0.10.0-pre.0
 
   '@nuxt/cli@3.36.1':
     resolution: {integrity: sha512-qu0LLFjOr1alMSrcVb3k3fWYXGeETeOIN5UoGoGEjwWVtf+KxQbN5IAzdXb7ip5D3pfKLcrAOTbIGf9XFmeGFQ==}
@@ -6804,10 +6795,6 @@ snapshots:
   '@noy-db/hub@0.10.0-pre.0(zod@4.4.3)':
     optionalDependencies:
       zod: 4.4.3
-
-  '@noy-db/to-memory@0.10.0-pre.0(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))':
-    dependencies:
-      '@noy-db/hub': 0.10.0-pre.0(zod@4.4.3)
 
   '@nuxt/cli@3.36.1(@nuxt/schema@4.4.8)(cac@6.7.14)(magicast@0.5.3)':
     dependencies:

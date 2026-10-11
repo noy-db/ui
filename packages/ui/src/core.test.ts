@@ -4,7 +4,6 @@
 import { describe, it, expect } from 'vitest'
 import { z } from 'zod'
 import { createNoydb, dict, enumOf, ref, type FieldMeta } from '@noy-db/hub'
-import { toMemory } from '@noy-db/to-memory'
 import { schemaFromDescribe } from './schema-from-describe'
 import { joinedSchema, joinedRows, joinedKey } from './collection-source'
 import { resolveField } from './resolve-field'
@@ -37,7 +36,7 @@ const userFieldMeta: Record<string, FieldMeta> = {
 }
 
 async function setup() {
-  const db = await createNoydb({ store: toMemory(), user: 'op', secret: 'noydb-ui-core-test-secret-2026-phrase' })
+  const db = await createNoydb({ user: 'op', secret: 'noydb-ui-core-test-secret-2026-phrase' })
   const vault = await db.openVault('v')
   const users = vault.collection('users', { schema: UserSchema, fieldMeta: userFieldMeta })
   const tasks = vault.collection('tasks', {
