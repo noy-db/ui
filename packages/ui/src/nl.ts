@@ -36,7 +36,9 @@ function describeField(f: EntitySchema['fields'][number], facets: Record<string,
  *  → observed values) lets the model use the data's real categorical values. */
 export function describeSchemaForPrompt(schema: EntitySchema, now: Date = new Date(), facets: Record<string, string[]> = {}): string {
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
-  const fields = schema.fields.map((f) => describeField(f, facets)).join('\n')
+  // Masked fields are left out entirely: their values must not leave the app in a prompt, and a
+  // query the model writes against one would be inert anyway.
+  const fields = schema.fields.filter((f) => !f.sensitivity).map((f) => describeField(f, facets)).join('\n')
   const presets = DATE_PRESETS.map((p) => p.token).join(', ')
   return [
     `You translate a natural-language request into a single-line query in this search DSL for the "${schema.entity}" list. Output ONLY the query — no markdown, no quotes around the whole line, no explanation.`,

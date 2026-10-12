@@ -40,6 +40,7 @@ function evalPred(row: Record<string, any>, schema: EntitySchema, p: Predicate, 
   if (p.partial) return true // incomplete trailing predicate — ignore in filtering
   const field = resolveField(schema, p.field)
   if (!field) return freeText(row, schema, scalarText(p.value)) // unknown field → free text fallback
+  if (field.sensitivity) return false // masked: answering any predicate would make it an oracle
   const rowVal = row[field.rowKey ?? field.id]
   switch (field.type) {
     case 'money': case 'number': return evalNumber(Number(rowVal), p, field)
@@ -100,7 +101,10 @@ function evalDate(rowDate: string, p: Predicate, now: Date): boolean {
 // ── sorting ──
 function sortRows<T extends Record<string, any>>(rows: T[], ast: Ast, schema: EntitySchema): T[] {
   if (!ast.sort.length) return rows
-  const keys = ast.sort.map((s) => ({ s, field: resolveField(schema, s.field) }))
+  const keys = ast.sort
+    .map((s) => ({ s, field: resolveField(schema, s.field) }))
+    .filter((k) => !k.field?.sensitivity) // ordering by a masked field leaks it
+  if (!keys.length) return rows
   return [...rows].sort((a, b) => {
     for (const { s, field } of keys) {
       const dir = s.dir === 'desc' ? -1 : 1

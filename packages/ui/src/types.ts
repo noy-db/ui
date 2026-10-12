@@ -15,6 +15,12 @@ export interface FieldDef {
   enumOrder?: readonly string[]
   /** Alternative names the user may type (field aliases, EN/IT/…). */
   aliases?: readonly string[]
+  /**
+   * describe()'s `pii`/`secret` marking, carried only while the schema MASKS the field (built
+   * without `reveal`). The engine then never reads its values — no filter, sort, group, facet,
+   * suggestion, free-text match or NL prompt — or a masked detail cell is one query away.
+   */
+  sensitivity?: 'pii' | 'secret'
 }
 
 export interface EntitySchema {

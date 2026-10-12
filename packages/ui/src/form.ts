@@ -46,6 +46,8 @@ export interface FieldInput {
   locales?: readonly string[]
   /** display unit suffix for number inputs (e.g. 'USD', 'min'). */
   unit?: string
+  /** describe() marks the field `pii`/`secret`: the editor keeps the value masked unless revealed. */
+  sensitive?: true
 }
 
 /** Resolve the input control for a field, honouring its `widget`, then `semanticType`/`type`. */
@@ -80,6 +82,7 @@ export function fieldInput(field: DescribedField, extraOptions?: { value: string
     ...(lookup ? { lookup } : {}),
     ...(field.i18n?.locales ? { locales: field.i18n.locales } : {}),
     ...(kind === 'number' && field.unit ? { unit: field.unit } : {}),
+    ...(field.sensitivity === 'pii' || field.sensitivity === 'secret' ? { sensitive: true as const } : {}),
   }
 }
 

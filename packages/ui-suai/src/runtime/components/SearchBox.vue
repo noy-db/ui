@@ -6,7 +6,7 @@
 // `schema` as a prop (domain-agnostic).
 import { computed, nextTick, onBeforeUnmount, ref } from 'vue'
 import { astToPills, narrate, resolveField, type Pill, removePill, movePill } from '@noy-db/ui'
-import { buildSuggestions, type Suggestion } from '@noy-db/ui'
+import { buildSuggestions, observedFacets, type Suggestion } from '@noy-db/ui'
 import { parse } from '@noy-db/ui'
 import { resolve } from '@noy-db/ui'
 import { serialize } from '@noy-db/ui'
@@ -62,18 +62,10 @@ const pills = computed(() => astToPills(ast.value, props.schema, props.formatVal
 const narration = computed(() => narrate(ast.value, props.schema, { t, formatValue: props.formatValue }))
 const restTitle = computed(() => narration.value.title)
 
-const facets = computed<Record<string, string[]>>(() => {
-  const out: Record<string, string[]> = {}
-  for (const f of props.schema.fields) {
-    // Text fields get observed values too: after the two-step `Label:` the user expects the list of
-    // labels, and joined entity-display fields (artist_name/label_name) are type text in the schema.
-    if (f.type !== 'entity' && f.type !== 'enum' && f.type !== 'text') continue
-    const set = new Set<string>()
-    for (const r of props.rows) { const v = r[f.rowKey ?? f.id]; if (v != null && v !== '') set.add(String(v)) }
-    out[f.id] = [...set].sort()
-  }
-  return out
-})
+// Text fields get observed values too: after the two-step `Label:` the user expects the list of
+// labels, and joined entity-display fields (artist_name/label_name) are type text in the schema.
+// Masked (pii/secret) fields are left out — family#158.
+const facets = computed(() => observedFacets(props.schema, props.rows))
 
 // Suggestions are the EXACT voice's instrument; in ask mode the panel hides (natural-language
 // register — a hint row shows instead). EXCEPTION: a pill-edit session is a DSL operation — its

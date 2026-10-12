@@ -101,6 +101,7 @@ export const NUI_LOCALE_TH: Record<string, string> = {
   'nui.detail.details': 'รายละเอียด',
   'nui.detail.edit': 'แก้ไข',
   'nui.detail.readonly': 'อ่านอย่างเดียว',
+  'nui.detail.reveal': 'แสดง',
   // traverse bar (found-set browse)
   'nui.traverse.prev': 'ก่อนหน้า',
   'nui.traverse.next': 'ถัดไป',

@@ -82,7 +82,7 @@ export function facetsForColumn<T extends Record<string, any>>(
   rows: readonly T[], ast: Ast, schema: EntitySchema, fieldId: string, now?: Date,
 ): Facet[] {
   const field = resolveField(schema, fieldId)
-  if (!field) return []
+  if (!field || field.sensitivity) return [] // a masked field's facets would list its values
   const key = field.rowKey ?? field.id
   const base = evaluate(rows, { where: astWithoutField(ast, fieldId).where, sort: [], groupBy: [] }, schema, now)
   const selected = new Set(readColumnValues(ast, fieldId))
@@ -90,6 +90,21 @@ export function facetsForColumn<T extends Record<string, any>>(
   if (field.enumOrder) facets.sort((a, b) => ordinalRank(field.enumOrder, a.value) - ordinalRank(field.enumOrder, b.value))
   else facets.sort((a, b) => b.count - a.count || a.value.localeCompare(b.value))
   return facets
+}
+
+/**
+ * Observed values per categorical field (enum/entity/text) — what the search box offers after
+ * `Label:` and what an NL prompt may cite. Masked (`sensitivity`) fields are left out.
+ */
+export function observedFacets(schema: EntitySchema, rows: readonly Record<string, any>[]): Record<string, string[]> {
+  const out: Record<string, string[]> = {}
+  for (const f of schema.fields) {
+    if (f.sensitivity || (f.type !== 'entity' && f.type !== 'enum' && f.type !== 'text')) continue
+    const set = new Set<string>()
+    for (const r of rows) { const v = r[f.rowKey ?? f.id]; if (v != null && v !== '') set.add(String(v)) }
+    out[f.id] = [...set].sort()
+  }
+  return out
 }
 
 /** Entity facets split into "in view" (present after ALL filters) vs "all others". */
