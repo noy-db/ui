@@ -21,10 +21,11 @@ const ROOT = resolve(fileURLToPath(import.meta.url), '../..')
 const PACKAGES = ['ui', 'ui-nuxt', 'ui-suai']
 
 // The exclusions, by name and with the reason — never a silent skip.
-//   examples/*  two private, separately-locked workspaces (`private: true`, own
-//               lockfile, `file:` deps). Neither is published and neither is in
-//               `pnpm-workspace.yaml`, so `turbo run typecheck` cannot reach them.
-//               Their tests are typechecked by nothing; that is a known, declared gap.
+//   examples/*  the two private, unpublished example apps, outside the peer-floor check.
+//               examples/showcase is a root workspace member: its own `typecheck` (tsc over
+//               src/scripts/test) runs under `turbo run typecheck`, so its tests ARE compiled,
+//               just not by a program this file inspects. examples/plain is a separate
+//               workspace with its own lockfile and has no test files.
 //   scripts/    this harness. `.mjs` by convention — there is no TypeScript here to check.
 const EXCLUDED = ['examples/', 'scripts/']
 
@@ -69,9 +70,10 @@ describe('typecheck covers the test files', () => {
   for (const pkg of PACKAGES) {
     const owned = inPackages.filter((f) => f.startsWith(`packages/${pkg}/`))
     if (owned.length === 0) {
-      // Not a pass by default: if this package ever gains a test file, the branch flips
-      // and the program assertion below starts applying to it.
-      it(`packages/${pkg} has no test files`, () => expect(owned).toEqual([]))
+      // Reported as a SKIP, not a pass: there is nothing to assert (family#159 — the old
+      // `expect(owned).toEqual([])` restated the branch condition and could not fail). If the
+      // package gains a test file, the branch flips and the assertion below applies to it.
+      it.skip(`packages/${pkg} has no test files — nothing to cover`, () => {})
       continue
     }
     it(`packages/${pkg}: all ${owned.length} test files are in the typecheck program`, () => {

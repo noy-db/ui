@@ -3,17 +3,14 @@
 
 # `@noy-db/ui-nuxt`
 
-### Schema-driven UI for [noy-db](https://github.com/noy-db/core) vaults
+### Schema-driven UI for [noy-db](https://github.com/noy-db/core) vaults, on Nuxt UI
 
-**Drop in a collection — get a fully interactive list, detail, search and AI out of the box.**
 Domain-free · built on Nuxt UI · deliberately plain · local-first.
 
-> **Fork status (rebuild in progress):** this package was rebuilt on **Nuxt UI** as the plain
-> fork of the family. It currently ships a subset — `CollectionList`, `SearchBox`, `EmptyState`,
-> `LoadingSkeleton`, `StatCard` — plus the full `core/` composable layer. The sophisticated
-> components described further down (record detail, traverse, header filters, galleries, themes)
-> live in **`@noy-db/ui-suai`**; sections below may still describe that richer surface until this
-> README is rewritten.
+The **plain fork** of the noy-db-ui family: a small component set styled entirely by
+[Nuxt UI](https://ui.nuxt.com), on the same `@noy-db/ui` engine as the flagship
+**`@noy-db/ui-suai`** — identical data capability, plainer surface. Pill search, header filters,
+grouping, record edit, history and theming live in `ui-suai`.
 
 Concepts (schema-driven, search engine, design tokens, architecture) live in **`@noy-db/ui`**.
 
@@ -23,53 +20,21 @@ Concepts (schema-driven, search engine, design tokens, architecture) live in **`
 ---
 
 A noy-db collection already describes itself — labels, types, units, enums, refs (`collection.describe()`).
-`@noy-db/ui-nuxt` turns that metadata into the UI you'd otherwise hand-write per entity: **browse, search,
-filter, group, view, edit, and AI-query** — with **zero per-collection code**.
-
-```vue
-<!-- a complete, searchable, filterable, groupable sales list -->
-<CollectionList :columns="columns" :rows="rows" @row-click="open" />
-<SearchBox v-model="query" :schema="schema" :rows="rows" />
-```
-
-## Why
-
-- 🧠 **Schema-driven** — columns, filters, enums, entity links and edit widgets all derive from
-  `describe()`. Add a collection, get its UI for free.
-- 🔗 **One vault or a federation** — components map 1:1 to noy-db's domains (collections, records,
-  blobs, keyring, identity).
-- 🎨 **Themeable, not opinionated** — UnoCSS + `--nui-*` CSS variables. Set `--nui-accent` and the
-  whole library reskins. Dark mode included. **No Nuxt UI, no CSS framework forced on your app.**
-- 🗣️ **AI + voice ready** — natural-language search (BYO LLM) and speech-to-text are first-class,
-  pluggable layers — not bolted on.
-- 📦 **Ships pre-compiled CSS** — consume it as a Nuxt module; your app build stays untouched.
-
-## The shape of the package
-
-Three tiers, by how often a developer touches them:
-
-```
-🛍️  src/runtime/components/   TOP SHELF   ← what you compose (10–15, discoverable at a glance)
-⚙️   src/runtime/core/         CONFIG       ← what you tune (theme · i18n · AI · voice · responsive)
-🔒  src/runtime/internal/     INVARIANT    ← sub-components you never place; on top of the @noy-db/ui engine
-```
-
-The engine itself (AST search, schema adapters, `useCollectionList`, tokens) is the framework-agnostic
-**`@noy-db/ui`** base this package depends on.
-
-
+The `@noy-db/ui` engine turns that into a schema, columns and a query; this package renders them with
+Nuxt UI components.
 
 ## Quick start
 
 ```bash
-npm i @noy-db/ui-nuxt
+npm i @noy-db/ui-nuxt @nuxt/ui
 ```
 
 ```ts
-// nuxt.config.ts — add the module; it auto-registers components, auto-imports core/ composables,
-// injects the pre-built CSS, and wires theme + locale. Configure once via the `noydbUi` key.
+// nuxt.config.ts — the module installs @nuxt/ui, auto-registers the components, auto-imports the
+// core/ composables, and wires theme + locale. It ships NO CSS: styling is Nuxt UI's (Tailwind v4 +
+// app.config theming). Configure once via the `noydbUi` key.
 export default defineNuxtConfig({
-  modules: ['@noy-db/ui-nuxt/module'],
+  modules: ['@nuxt/ui', '@noy-db/ui-nuxt/module'],
   noydbUi: { theme: 'system', locale: 'en' },
 })
 ```
@@ -82,36 +47,37 @@ provideNoydbUi({ llm: myLlmClient /* , voice: myVoiceSource */ })
 
 ```vue
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useCollectionList, schemaFromDescribe } from '@noy-db/ui'
 const schema = schemaFromDescribe('sales', vault.collection('sales').describe().fields)
+const query = ref('')
 const list = useCollectionList({ baseRows, query, entity: 'sales', columns, defaultSort, schema })
 </script>
 
 <template>
-  <CollectionList :columns="columns" :rows="list.visibleRows.value" v-bind="list" />
+  <SearchBox v-model="query" />
+  <CollectionList :columns="columns" :rows="list.visibleRows.value" @row-click="open" />
 </template>
 ```
 
-## Top-shelf components
+The query string is the engine's full DSL (`field:value`, `>`, `<`, `sort:`, `group:`); filtering
+happens in `useCollectionList`, not in the component.
 
-| | Component | One-liner |
+## Components
+
+Registered flat (no prefix) by the module:
+
+| Component | Props | What it does |
 |---|---|---|
-| 📋 | **CollectionList** | browse/search/filter/group/sort a collection (or joined ones) |
-| 🔎 | **SearchBox** | pills-in-the-box query with field/value autocomplete |
-| ⭐ | **SavedSearchMenu** | bookmark, favorite, rename, set-default searches |
-| 🕘 | **RecentSearchMenu** | recently-run queries as pills |
-| ✨ | **NlSearchButton** | natural-language → query (presentational; BYO AI) |
-| 👁️ | **ColumnChooser** | per-user show/hide column preferences |
-| 🗂️ | **GroupByControl** | group-by + expand/collapse to level |
+| **CollectionList** | `columns`, `rows`, `loading?` · emits `row-click` | engine `AppColumn[]` + rows → a `UTable`; sorting is table-local |
+| **SearchBox** | `v-model` (query string), `placeholder?` | one `UInput` bound to the query — no pills or suggestions |
+| **RecordDetail** | `fields` (describe()), `record`, `optionsFor?` · emits `ref` | read-only label/value grid; `pii`/`secret` fields always masked |
+| **StatCard** | `label`, `value`, `subValue?`, `icon?`, `color?` | a single metric |
+| **EmptyState** | `title`, `icon?`, `description?`, `actionLabel?` · emits `action` | empty/no-match placeholder |
+| **LoadingSkeleton** | `lines?`, `height?` | loading placeholder |
 
-…with **`Item` · `Asset` · `Auth` · `Owner`** families on the roadmap (record detail/edit, blob
-viewer, vault unlock/keyring, identity & federation).
-
-## Status
-
-Extracted from an internal pilot app; **destined for the noy-db monorepo as a standalone repo.** The List
-family + the engine are production-validated (type-checked, `nuxt build`-clean). `core/` is scaffolded;
-`Item`/`Asset`/`Auth`/`Owner` are next.
+[`examples/plain`](https://github.com/noy-db/ui/tree/main/examples/plain) is a complete app on this
+package.
 
 ## Develop
 
@@ -126,4 +92,4 @@ The engine + its unit tests live in **`@noy-db/ui`** (`pnpm --filter @noy-db/ui 
 
 ## License
 
-TBD (will follow noy-db).
+[Apache-2.0](LICENSE)

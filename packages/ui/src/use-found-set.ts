@@ -2,6 +2,9 @@
 // PER-TAB BY CONSTRUCTION (spec §6 invariant 2): a new browser tab is a new module
 // graph — never assume another tab shares this state. The snapshot's `query` string
 // is the cross-tab seed (invariant 1); URL seeding lands in P-C.
+// CLIENT-ONLY: these Maps live for the module's lifetime, which under SSR is the server
+// process — a write during server-side setup would be shared by every request. Capture and
+// read the found set from client code (event handlers, onMounted), never during SSR setup.
 import { ref, type Ref } from 'vue'
 import type { FoundSetSnapshot } from './traverse'
 

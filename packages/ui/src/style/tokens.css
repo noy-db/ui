@@ -11,6 +11,15 @@
   --nui-bg: #ffffff;
   --nui-bg-accent: #f1f5f9;
   --nui-danger: #dc2626;
+  /* semantic badge tints (StatCard icons) */
+  --nui-badge-success-bg: rgba(22, 163, 74, 0.10);
+  --nui-badge-success-fg: #166534;
+  --nui-badge-warning-bg: rgba(217, 119, 6, 0.10);
+  --nui-badge-warning-fg: #92400e;
+  --nui-badge-error-bg: rgba(220, 38, 38, 0.10);
+  --nui-badge-error-fg: #991b1b;
+  --nui-badge-info-bg: rgba(14, 165, 233, 0.10);
+  --nui-badge-info-fg: #075985;
 }
 
 /* Dark theme — a host (or useTheme()) sets data-theme="dark" on <html>. Overrides the defaults. */
@@ -24,4 +33,12 @@
   --nui-bg: #0f172a;
   --nui-bg-accent: #1e293b;
   --nui-danger: #f87171;
+  --nui-badge-success-bg: rgba(74, 222, 128, 0.12);
+  --nui-badge-success-fg: #4ade80;
+  --nui-badge-warning-bg: rgba(251, 191, 36, 0.12);
+  --nui-badge-warning-fg: #fbbf24;
+  --nui-badge-error-bg: rgba(248, 113, 113, 0.12);
+  --nui-badge-error-fg: #f87171;
+  --nui-badge-info-bg: rgba(56, 189, 248, 0.12);
+  --nui-badge-info-fg: #38bdf8;
 }

@@ -17,7 +17,9 @@ export interface SchemaFromDescribeOptions {
   enumFields?: readonly string[]
   /** Fields scanned for bare free-text terms. Defaults to the entity + text fields. */
   textFields?: readonly string[]
-  /** Drop fields from the searchable set (e.g. raw audit/id columns) by key. */
+  /** Drop fields from the searchable set (e.g. raw audit/id columns) by key. Not a privacy
+   *  control: a host column can still show and sort them by row key. To keep VALUES out of every
+   *  search path, mark the field `sensitivity: 'pii' | 'secret'` in fieldMeta instead. */
   exclude?: readonly string[]
   /**
    * Localized display label for a field, or `undefined` to keep the describe() label.

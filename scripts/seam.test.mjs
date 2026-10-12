@@ -56,6 +56,19 @@ describe('the published hub seam', () => {
     expect(line).toBe("import type { StandardSchemaV1Issue } from '@noy-db/hub'")
   })
 
+  // The root-import check above matches only the BARE specifier, so `@noy-db/hub/ui` or any other
+  // subpath passed it (family#159). This one reads every hub specifier — static, type-only,
+  // dynamic or re-export — and allows /introspection alone.
+  it('imports no hub subpath but /introspection', () => {
+    const subpaths = new Set()
+    for (const f of files) {
+      for (const m of readFileSync(f, 'utf8').matchAll(/['"]@noy-db\/hub(\/[^'"]*)?['"]/g)) {
+        if (m[1]) subpaths.add(m[1])
+      }
+    }
+    expect([...subpaths]).toEqual(['/introspection'])
+  })
+
   it('binds the describe types through /introspection', () => {
     const bound = files.filter((f) => /from '@noy-db\/hub\/introspection'/.test(readFileSync(f, 'utf8')))
     expect(bound.length).toBeGreaterThan(0)
