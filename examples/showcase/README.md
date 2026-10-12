@@ -2,8 +2,8 @@
 
 A static, browser-only Nuxt SPA that demonstrates `@noy-db/ui` (the engine) and `@noy-db/ui-suai`
 (the SUAI binding, `--su-*` tokens) against a real noy-db vault — a vinyl record collection with
-album, artist, and label collections, joins, Thai/English localization, encrypted cover-art
-blobs, and a guided balloon tour.
+album, artist, and label collections, joins, Thai/English localization, cover art round-tripped
+through the vault's encrypted blob store, and a guided balloon tour.
 
 `ssr: false` — no server. Everything runs in the browser: vault decryption, schema-driven list/
 search/detail, cover blob round-trips, i18n switch, theme toggle.
@@ -34,7 +34,10 @@ pnpm build
 
 The root `pnpm install` also installs the showcase; it has no lockfile of its own.
 
-`public/demo.noydb` and `public/covers/` are **committed**, so the app runs as-is. `pnpm seed`
+`public/demo.noydb` and `public/covers/` are **committed**, so the app runs as-is. The covers
+are **plain PNGs**, not encrypted: blobs do not travel in a `.noydb` bundle, so `scripts/seed.ts`
+writes them as static assets. On first view the app stores a cover in the vault's encrypted blob
+store and reads it back — the demo is that round-trip, not secret art. `pnpm seed`
 re-runs `scripts/seed.ts` to regenerate them; you only need it if you change the dataset.
 
 ## Running
@@ -82,7 +85,7 @@ npx serve .output/public
 | Schema-driven list + search | `/records`, `/artists`, `/labels` |
 | Joins surfaced in list columns | `/records` (artist + label join) |
 | Record detail with ref links | `/records/[id]` |
-| Cover art — live blob decrypt in-browser | `/records/[id]` (cover panel + caption) |
+| Cover art — blob encrypt + decrypt round-trip in-browser (source PNG is a public static asset) | `/records/[id]` (cover panel + caption) |
 | Thai/English across chrome + enum values + field headers | lang switcher in header |
 | Light/dark/system theme toggle | theme toggle in header |
 | Guided balloon tour (per-page, localized, Prev/Next/Skip) | `?` button in header |

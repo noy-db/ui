@@ -10,6 +10,6 @@ describe('useShowcaseI18n', () => {
     i.setLocale('th')
     expect(i.enumLabel('genre', 'rock')).toBe('ร็อก')
     expect(i.fieldLabel('records', 'title')).toBe('ชื่ออัลบั้ม')
-    expect(i.t('nav.records', 'Records')).toBeTruthy()
+    expect(i.t('nav.records', 'Records')).toBe('แผ่นเสียง') // not the fallback
   })
 })
