@@ -32,7 +32,7 @@ export function groupRows<T extends Record<string, any>>(
   rows: readonly T[], schema: EntitySchema, fieldId: string,
 ): RowGroup<T>[] {
   const field = resolveField(schema, fieldId)
-  if (!field) return []
+  if (!field || field.sensitivity) return [] // group values of a masked field are its values
   const key = field.rowKey ?? field.id
   const map = new Map<string, T[]>()
   for (const r of rows) {

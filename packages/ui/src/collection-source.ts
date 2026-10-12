@@ -47,8 +47,8 @@ export function joinedSchema(root: EntitySchema, legs: readonly JoinLeg[]): Enti
     for (const f of picked) {
       const id = joinedKey(ns, f.id)
       // drop aliases (collision-safety): joined fields are addressed by their namespaced id
-      fields.push({ id, label: `${prefix} · ${f.label}`, type: f.type, rowKey: id, enumOrder: f.enumOrder })
-      if (f.type === 'text' || f.type === 'entity') textFields.push(id)
+      fields.push({ id, label: `${prefix} · ${f.label}`, type: f.type, rowKey: id, enumOrder: f.enumOrder, ...(f.sensitivity ? { sensitivity: f.sensitivity } : {}) })
+      if ((f.type === 'text' || f.type === 'entity') && !f.sensitivity) textFields.push(id)
     }
   }
   return { entity: root.entity, fields, textFields }

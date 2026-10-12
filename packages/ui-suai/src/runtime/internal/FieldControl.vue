@@ -4,6 +4,7 @@
 // i18n-text edits emit the whole updated locale map. Error/hint lines render under the control.
 import { computed, ref, watch, onBeforeUnmount } from 'vue'
 import type { FieldInput, FieldHint } from '@noy-db/ui'
+import { useNuiI18n } from '../core/i18n'
 
 type Option = { value: string; label: string }
 
@@ -19,10 +20,19 @@ const props = withDefaults(defineProps<{
    */
   search?: (term: string) => Promise<readonly Option[]>
   idPrefix?: string
-}>(), { idPrefix: 'f' })
+  /** Show a `sensitive` (pii/secret) value without the click-to-show step — the host's reveal. */
+  reveal?: boolean
+}>(), { idPrefix: 'f', reveal: false })
 
 const emit = defineEmits<{ 'update:modelValue': [value: any] }>()
 const id = computed(() => `${props.idPrefix}-${props.input.key}`)
+const { t } = useNuiI18n()
+
+// family#158: a pii/secret value stays masked in edit mode as in read mode. No control renders
+// (so the value is not in the DOM) until the user asks; an empty value has nothing to hide.
+const shown = ref(false)
+const masked = computed(() =>
+  !!props.input.sensitive && !props.reveal && !shown.value && props.modelValue != null && props.modelValue !== '')
 
 // ── autocomplete ────────────────────────────────────────────────────────────
 // Labels are only known for options the host has actually returned, so a stored key renders as
@@ -75,7 +85,17 @@ function num(v: string): void {
 
 <template>
   <div class="min-w-0">
-    <template v-if="input.kind === 'i18n-text'">
+    <div v-if="masked" class="flex items-center gap-1.5 h-9">
+      <span class="text-sm text-nui-fg">••••••</span>
+      <button
+        type="button" class="text-nui-muted hover:text-nui-fg" :aria-controls="id"
+        :title="t('nui.detail.reveal', 'Show')" :aria-label="t('nui.detail.reveal', 'Show')"
+        @click="shown = true"
+      >
+        <span class="i-lucide-eye size-3.5" aria-hidden="true" />
+      </button>
+    </div>
+    <template v-else-if="input.kind === 'i18n-text'">
       <div v-for="loc in input.locales" :key="loc" class="flex items-center gap-1.5 mb-1 last:mb-0">
         <span class="shrink-0 text-[10px] uppercase leading-4 px-1 rounded border border-nui-border text-nui-muted">{{ loc }}</span>
         <input

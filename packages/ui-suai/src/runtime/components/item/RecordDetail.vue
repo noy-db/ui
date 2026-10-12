@@ -129,7 +129,7 @@ function onLink(c: DetailCell, e: MouseEvent): void {
               <FieldControl
                 v-if="editing && c.canEdit && draft"
                 :input="c.input" :model-value="draft[c.cell.key]" :error="errors?.[c.cell.key]" :hint="c.hint"
-                :search="search?.[c.cell.key]"
+                :search="search?.[c.cell.key]" :reveal="reveal"
                 id-prefix="d" @update:model-value="(v) => { draft![c.cell.key] = v }"
               />
               <a

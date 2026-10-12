@@ -71,6 +71,7 @@ function sortSuggestions(schema: EntitySchema, partial: string, t: T = EN): Sugg
   const head = t('nui.pill.sort', 'Sort:')
   const out: Suggestion[] = []
   for (const f of schema.fields) {
+    if (f.sensitivity) continue // sorting by a masked field is inert — don't offer it
     const names = [f.id, f.label, ...(f.aliases ?? [])].map(normalizeTerm)
     if (p && !names.some((x) => x.includes(p))) continue
     const up: Suggestion = { label: `${head} ${f.label} ↑`, hint: 'a→z', token: `sort:${f.id}-up` }
@@ -85,7 +86,7 @@ function groupSuggestions(schema: EntitySchema, partial: string, t: T = EN): Sug
   const p = normalizeTerm(partial)
   const out: Suggestion[] = []
   for (const f of schema.fields) {
-    if (f.type !== 'enum' && f.type !== 'entity') continue
+    if ((f.type !== 'enum' && f.type !== 'entity') || f.sensitivity) continue
     const names = [f.id, f.label, ...(f.aliases ?? [])].map(normalizeTerm)
     if (p && !names.some((x) => x.includes(p))) continue
     out.push({ label: `${t('nui.group.title', 'Group by')} ${f.label}`, hint: 'group', token: `group:${f.id}` })
@@ -141,6 +142,7 @@ export function buildSuggestions(
       return viewSuggestions(schema, columns, partial, cmd, t).slice(0, MAX)
     }
     const field = resolveField(schema, fieldName)
+    if (field?.sensitivity) return [] // masked: a filter on it is inert, so offer nothing
     if (field) {
       if (field.type === 'date') {
         out.push(...datePresetSuggestions(field, partial))
@@ -169,6 +171,7 @@ export function buildSuggestions(
 
   // field name matches → `field:` (two-step; the token shows the LABEL, not the internal id)
   for (const f of schema.fields) {
+    if (f.sensitivity) continue
     const names = [f.id, f.label, ...(f.aliases ?? [])].map(normalizeTerm)
     if (names.some((x) => x.includes(n))) out.push({ label: `${f.label}:`, hint: 'field', token: `${fieldTok(f)}:`, caretAfter: 'value' })
   }
@@ -185,12 +188,12 @@ export function buildSuggestions(
 
   // entity facet value matches → field:"value"
   for (const f of schema.fields) {
-    if (f.type !== 'entity') continue
+    if (f.type !== 'entity' || f.sensitivity) continue
     for (const v of facets[f.id] ?? []) if (normalizeTerm(v).includes(n)) out.push({ label: `${f.label}: ${v}`, hint: 'filter', token: `${f.id}:${tok(v)}` })
   }
 
   // date phrase / rolling preset → dateField:canonical-token (friendly label, resolved at run time)
-  const dateField = schema.fields.find((f) => f.type === 'date')
+  const dateField = schema.fields.find((f) => f.type === 'date' && !f.sensitivity)
   if (dateField) {
     out.push(...datePresetSuggestions(dateField, d))
     if (resolveDate(d, now)) {

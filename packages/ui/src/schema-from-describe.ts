@@ -27,6 +27,9 @@ export interface SchemaFromDescribeOptions {
    * language (`genre:jazz`) still resolve.
    */
   labelFor?: (key: string, label: string) => string | undefined
+  /** Search `pii`/`secret` fields like any other. Default false: they stay in the schema (so pills
+   *  and columns can name them) but flagged with `sensitivity`, which the engine never reads past. */
+  reveal?: boolean
 }
 
 /** Map a describe() field (+ its role) to the search engine's coarse FieldType. */
@@ -53,7 +56,9 @@ function fieldType(f: DescribedField, isDisplayTarget: boolean, forceEnum: boole
 /**
  * Build an `EntitySchema` from `collection.describe().fields`. Field types come from
  * semanticType/dict/money/ref, enum orderings from the dictionary's declared value order, aliases
- * from fieldMeta. Every described field is exposed, so the whole record becomes searchable.
+ * from fieldMeta. Every described field is exposed, so the whole record becomes searchable —
+ * except the values of `pii`/`secret` fields, which stay masked (`FieldDef.sensitivity`) unless
+ * `opts.reveal`.
  */
 export function schemaFromDescribe(
   entity: string,
@@ -78,6 +83,11 @@ export function schemaFromDescribe(
       ...(localized && localized !== f.label ? [f.label] : []),
     ]
     if (aliases.length) def.aliases = aliases
+    if (!opts.reveal && (f.sensitivity === 'pii' || f.sensitivity === 'secret')) {
+      def.sensitivity = f.sensitivity
+      fields.push(def) // no enumOrder: a sensitive dict's vocabulary is a value list too
+      continue
+    }
     if (type === 'enum') {
       // dict.values carries the declared order (and labels); a native lookup field without a
       // dict block still contributes its closed-vocabulary key set.
@@ -87,8 +97,10 @@ export function schemaFromDescribe(
     fields.push(def)
   }
 
-  const textFields =
+  const sensitive = new Set(fields.filter((f) => f.sensitivity).map((f) => f.id))
+  const textFields = (
     opts.textFields ?? fields.filter((f) => f.type === 'text' || f.type === 'entity').map((f) => f.id)
+  ).filter((id) => !sensitive.has(id))
 
   return { entity, fields, textFields }
 }
