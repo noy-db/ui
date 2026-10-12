@@ -1,2 +1,2 @@
-# Standalone install (detached from the repo root workspace), like examples/showcase.
+# Standalone install (detached from the repo root workspace) — unlike examples/showcase, which is a root workspace member.
 packages: []
