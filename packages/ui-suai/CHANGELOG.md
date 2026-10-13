@@ -1,5 +1,14 @@
 # Changelog — @noy-db/ui-suai
 
+## 0.10.0-pre.2
+
+`@noy-db/hub` dev pin moves to `0.10.0-pre.2` (peer range unchanged; `^0.10.0-pre.0` admits it).
+
+- **Sensitive fields stay masked (family#158, #13).** `SearchBox` builds its suggestions from
+  `observedFacets`, so a `pii`/`secret` field offers no values. In edit mode a sensitive, non-empty
+  field shows `••••••` with a reveal button until clicked; `RecordDetail` forwards `reveal`.
+- **Badge tokens (#14).** The injected `@noy-db/ui` tokens now define `--nui-badge-*`.
+
 ## 0.10.0-pre.0
 
 Lockstep bump to 0.10.0-pre.0; no package-level change in this release. See `@noy-db/hub` 0.10.0-pre.0 for the line's notes.

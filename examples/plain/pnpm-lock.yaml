@@ -16,16 +16,16 @@ importers:
         version: 1.2.114
       '@noy-db/as-noydb':
         specifier: 0.10.0-pre.0
-        version: 0.10.0-pre.0(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))
+        version: 0.10.0-pre.0(@noy-db/hub@0.10.0-pre.2(zod@4.4.3))
       '@noy-db/hub':
-        specifier: 0.10.0-pre.0
-        version: 0.10.0-pre.0(zod@4.4.3)
+        specifier: 0.10.0-pre.2
+        version: 0.10.0-pre.2(zod@4.4.3)
       '@noy-db/ui':
         specifier: file:../../packages/ui
-        version: file:../../packages/ui(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))(vue@3.5.40(typescript@5.9.3))
+        version: file:../../packages/ui(@noy-db/hub@0.10.0-pre.2(zod@4.4.3))(vue@3.5.40(typescript@5.9.3))
       '@noy-db/ui-nuxt':
         specifier: file:../../packages/ui-nuxt
-        version: file:../../packages/ui-nuxt(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))(@nuxt/kit@4.4.8(magicast@0.5.3))(@nuxt/ui@4.10.0(gstvbj37f2hmjea2o57qrd7mmu))(vue@3.5.40(typescript@5.9.3))
+        version: file:../../packages/ui-nuxt(@noy-db/hub@0.10.0-pre.2(zod@4.4.3))(@nuxt/kit@4.4.8(magicast@0.5.3))(@nuxt/ui@4.10.0(gstvbj37f2hmjea2o57qrd7mmu))(vue@3.5.40(typescript@5.9.3))
       '@nuxt/ui':
         specifier: ^4.0.0
         version: 4.10.0(gstvbj37f2hmjea2o57qrd7mmu)
@@ -659,8 +659,8 @@ packages:
     peerDependencies:
       '@noy-db/hub': ^0.7.0 || ^0.7.1-pre.0 || ^0.8.0-pre.0 || ^0.9.0-pre.1 || ^0.10.0-pre.0
 
-  '@noy-db/hub@0.10.0-pre.0':
-    resolution: {integrity: sha512-cQOrfzd6iuuo+iryw92sGz5+3Xn2b7ri1FGTApMgi5W8S+233kpp+jYhli4jFSHBSZdTtXnrflNxsQ6ed54dKw==}
+  '@noy-db/hub@0.10.0-pre.2':
+    resolution: {integrity: sha512-n3lGyg2lpMpEx7TjdBHQwHRuiej6BGU+3kBqSsquM3UMXfn04JKSHml60SeltsbQgjXvd96wVLra3OanUhnzHg==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       zod: ^3.0.0 || ^4.0.0
@@ -4921,26 +4921,26 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
 
-  '@noy-db/as-noydb@0.10.0-pre.0(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))':
+  '@noy-db/as-noydb@0.10.0-pre.0(@noy-db/hub@0.10.0-pre.2(zod@4.4.3))':
     dependencies:
-      '@noy-db/hub': 0.10.0-pre.0(zod@4.4.3)
+      '@noy-db/hub': 0.10.0-pre.2(zod@4.4.3)
 
-  '@noy-db/hub@0.10.0-pre.0(zod@4.4.3)':
+  '@noy-db/hub@0.10.0-pre.2(zod@4.4.3)':
     optionalDependencies:
       zod: 4.4.3
 
-  '@noy-db/ui-nuxt@file:../../packages/ui-nuxt(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))(@nuxt/kit@4.4.8(magicast@0.5.3))(@nuxt/ui@4.10.0(gstvbj37f2hmjea2o57qrd7mmu))(vue@3.5.40(typescript@5.9.3))':
+  '@noy-db/ui-nuxt@file:../../packages/ui-nuxt(@noy-db/hub@0.10.0-pre.2(zod@4.4.3))(@nuxt/kit@4.4.8(magicast@0.5.3))(@nuxt/ui@4.10.0(gstvbj37f2hmjea2o57qrd7mmu))(vue@3.5.40(typescript@5.9.3))':
     dependencies:
-      '@noy-db/hub': 0.10.0-pre.0(zod@4.4.3)
-      '@noy-db/ui': file:../../packages/ui(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))(vue@3.5.40(typescript@5.9.3))
+      '@noy-db/hub': 0.10.0-pre.2(zod@4.4.3)
+      '@noy-db/ui': file:../../packages/ui(@noy-db/hub@0.10.0-pre.2(zod@4.4.3))(vue@3.5.40(typescript@5.9.3))
       '@nuxt/ui': 4.10.0(gstvbj37f2hmjea2o57qrd7mmu)
       vue: 3.5.40(typescript@5.9.3)
     optionalDependencies:
       '@nuxt/kit': 4.4.8(magicast@0.5.3)
 
-  '@noy-db/ui@file:../../packages/ui(@noy-db/hub@0.10.0-pre.0(zod@4.4.3))(vue@3.5.40(typescript@5.9.3))':
+  '@noy-db/ui@file:../../packages/ui(@noy-db/hub@0.10.0-pre.2(zod@4.4.3))(vue@3.5.40(typescript@5.9.3))':
     dependencies:
-      '@noy-db/hub': 0.10.0-pre.0(zod@4.4.3)
+      '@noy-db/hub': 0.10.0-pre.2(zod@4.4.3)
       vue: 3.5.40(typescript@5.9.3)
 
   '@nuxt/cli@3.37.0(@nuxt/schema@4.4.8)(cac@6.7.14)(magicast@0.5.3)':
