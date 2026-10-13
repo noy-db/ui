@@ -1,12 +1,16 @@
 // Domain-free unit tests: prove the core works against a GENERIC noy-db collection (no app-specific /
 // domain coupling), so this package is portable to the noy-db monorepo as-is. The app keeps
 // separate integration tests against its real collections.
+//
+// Lives OUTSIDE src/ on purpose: it needs a live vault, so it value-imports `createNoydb` from the
+// bare `@noy-db/hub`, and the rail's architecture gate walks src/ for the /introspection-only seam.
+// Moving it back turns that gate red. tsconfig, vitest and lint each name __tests__ explicitly.
 import { describe, it, expect } from 'vitest'
 import { z } from 'zod'
 import { createNoydb, dict, enumOf, ref, type FieldMeta } from '@noy-db/hub'
-import { schemaFromDescribe } from './schema-from-describe'
-import { joinedSchema, joinedRows, joinedKey } from './collection-source'
-import { resolveField } from './resolve-field'
+import { schemaFromDescribe } from '../src/schema-from-describe'
+import { joinedSchema, joinedRows, joinedKey } from '../src/collection-source'
+import { resolveField } from '../src/resolve-field'
 
 const TASK_STATUS = ['todo', 'doing', 'done'] as const
 const TASK_PRIORITY = ['low', 'mid', 'high'] as const

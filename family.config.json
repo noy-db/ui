@@ -4,6 +4,7 @@
   "binds": "@noy-db/hub/introspection",
   "publishes": true,
   "gates": [
+    "architecture",
     "versions-uniform",
     "check-license",
     "changeset-names"

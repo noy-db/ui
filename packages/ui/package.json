@@ -52,7 +52,7 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest run",
-    "lint": "eslint src/",
+    "lint": "eslint src/ __tests__/",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
