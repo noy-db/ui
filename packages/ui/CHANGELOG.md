@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.10.0-pre.2
+
+`@noy-db/hub` dev pin moves to `0.10.0-pre.2` (peer range unchanged; `^0.10.0-pre.0` admits it).
+
+- **Sensitive fields stay masked in search (family#158, #13).** A field `describe()` marks
+  `sensitivity: 'pii' | 'secret'` now carries `FieldDef.sensitivity`, and the engine reads none of
+  its values: no filter predicate, sort key, group, facet, suggestion, free-text match, NL prompt
+  entry or `enumOrder`. Pass `schemaFromDescribe(…, { reveal: true })` for a viewer allowed to see
+  them. New export `observedFacets(schema, rows)` builds suggestion facets with the same gate.
+  `fieldInput()` sets `FieldInput.sensitive` so an edit control can mask its value. Thai locale
+  gains `nui.detail.reveal`.
+- **Badge tokens (#14).** `tokens.css` adds eight `--nui-badge-*` variables with light and dark
+  values.
+- **README (#15).** New "Sensitive fields" section: what the engine masks, that host-built
+  columns are the host's to mask, and that `exclude` is not a privacy control.
+
 ## 0.10.0-pre.0
 
 Lockstep bump to 0.10.0-pre.0; no package-level change in this release. See `@noy-db/hub` 0.10.0-pre.0 for the line's notes.

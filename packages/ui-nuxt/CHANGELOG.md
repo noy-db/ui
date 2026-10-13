@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0-pre.2
+
+Lockstep bump to 0.10.0-pre.2; no package-level source change. `@noy-db/hub` dev pin moves to
+`0.10.0-pre.2`. The README is rewritten to the six components the package actually ships, states
+that it ships no CSS, and names the Apache-2.0 licence (#14).
+
 ## 0.10.0-pre.0
 
 Lockstep bump to 0.10.0-pre.0; no package-level change in this release. See `@noy-db/hub` 0.10.0-pre.0 for the line's notes.
