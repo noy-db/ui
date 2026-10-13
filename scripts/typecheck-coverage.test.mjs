@@ -17,7 +17,9 @@ const ROOT = resolve(fileURLToPath(import.meta.url), '../..')
 // 22 of 22 in the tsc program, falsified by planting a type error in a test file and
 // watching `tsc --noEmit` fail. Moving them to `__tests__/`, the layout every sibling
 // uses, would silently drop all 22 with no config change and no failing command.
-// That is what this file exists to stop.
+// That is what this file exists to stop. One file does live there — packages/ui/__tests__/
+// core.test.ts, kept out of src/ for the architecture gate — and is covered only because
+// packages/ui/tsconfig.json names `__tests__` in `include`.
 const PACKAGES = ['ui', 'ui-nuxt', 'ui-suai']
 
 // The exclusions, by name and with the reason — never a silent skip.
